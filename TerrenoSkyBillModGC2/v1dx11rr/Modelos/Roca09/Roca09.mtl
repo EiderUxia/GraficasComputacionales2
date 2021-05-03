@@ -1,0 +1,109 @@
+newmtl rock_low_02FBXASC032Copy_ncl1_1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd rock_Base_Color.jpg
+bump  -bm 1 rock_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks rock_Metallic.jpg
+Ns 0.00
+newmtl rock_low_02SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd rock_Base_Color.jpg
+bump  -bm 1 rock_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks rock_Metallic.jpg
+Ns 0.00
+newmtl rock_low_03FBXASC032CopySG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd rock_Base_Color.jpg
+bump  -bm 1 rock_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks rock_Metallic.jpg
+Ns 0.00
+newmtl rock_low_03SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd rock_Base_Color.jpg
+bump  -bm 1 rock_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks rock_Metallic.jpg
+Ns 0.00
+newmtl rock_low_04FBXASC032CopyFBXASC032CopyFBXASC032CopySG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd rock_Base_Color.jpg
+bump  -bm 1 rock_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks rock_Metallic.jpg
+Ns 0.00
+newmtl rock_low_04FBXASC032CopyFBXASC032CopySG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd rock_Base_Color.jpg
+bump  -bm 1 rock_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks rock_Metallic.jpg
+Ns 0.00
+newmtl rock_low_04SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd rock_Base_Color.jpg
+bump  -bm 1 rock_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks rock_Metallic.jpg
+Ns 0.00
+newmtl rock_low_05FBXASC032CopyFBXASC032CopySG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd rock_Base_Color.jpg
+bump  -bm 1 rock_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks rock_Metallic.jpg
+Ns 0.00
+newmtl rock_low_05FBXASC032CopySG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd rock_Base_Color.jpg
+bump  -bm 1 rock_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks rock_Metallic.jpg
+Ns 0.00
+newmtl tree_SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd tree_Base_Color.jpg
+bump  -bm 1 tree_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.02 0.02 0.02
+Ns 0.00

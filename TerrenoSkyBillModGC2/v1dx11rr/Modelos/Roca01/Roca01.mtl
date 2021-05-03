@@ -1,0 +1,330 @@
+newmtl dronFBXASC032CopySG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd dron_Base_Color.jpg
+bump  -bm 1 dron_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks dron_Metallic.jpg
+Ns 0.00
+newmtl dronSG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd dron_Base_Color.jpg
+bump  -bm 1 dron_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks dron_Metallic.jpg
+Ns 0.00
+newmtl grunt_SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd grunt_Base_Color.jpg
+bump  -bm 1 grunt_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks grunt_Metallic.jpg
+Ns 0.00
+newmtl rock_low_01FBXASC032CopySG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd rock_Base_Color.jpg
+bump  -bm 1 rock_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks rock_Metallic.jpg
+Ns 0.00
+newmtl rock_low_01FBXASC032Copy_ncl1_1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd rock_Base_Color.jpg
+bump  -bm 1 rock_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks rock_Metallic.jpg
+Ns 0.00
+newmtl rock_low_01SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd rock_Base_Color.jpg
+bump  -bm 1 rock_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks rock_Metallic.jpg
+Ns 0.00
+newmtl rock_low_02FBXASC032CopySG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd rock_Base_Color.jpg
+bump  -bm 1 rock_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks rock_Metallic.jpg
+Ns 0.00
+newmtl rock_low_02FBXASC032Copy_ncl1_1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd rock_Base_Color.jpg
+bump  -bm 1 rock_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks rock_Metallic.jpg
+Ns 0.00
+newmtl rock_low_02SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd rock_Base_Color.jpg
+bump  -bm 1 rock_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks rock_Metallic.jpg
+Ns 0.00
+newmtl rock_low_03FBXASC032CopySG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd rock_Base_Color.jpg
+bump  -bm 1 rock_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks rock_Metallic.jpg
+Ns 0.00
+newmtl rock_low_03FBXASC032Copy_ncl1_1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd rock_Base_Color.jpg
+bump  -bm 1 rock_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks rock_Metallic.jpg
+Ns 0.00
+newmtl rock_low_03SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd rock_Base_Color.jpg
+bump  -bm 1 rock_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks rock_Metallic.jpg
+Ns 0.00
+newmtl rock_low_04FBXASC032CopyFBXASC032CopyFBXASC032CopySG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd rock_Base_Color.jpg
+bump  -bm 1 rock_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks rock_Metallic.jpg
+Ns 0.00
+newmtl rock_low_04FBXASC032CopyFBXASC032CopySG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd rock_Base_Color.jpg
+bump  -bm 1 rock_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks rock_Metallic.jpg
+Ns 0.00
+newmtl rock_low_04FBXASC032CopySG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd rock_Base_Color.jpg
+bump  -bm 1 rock_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks rock_Metallic.jpg
+Ns 0.00
+newmtl rock_low_04FBXASC032Copy_ncl1_1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd rock_Base_Color.jpg
+bump  -bm 1 rock_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks rock_Metallic.jpg
+Ns 0.00
+newmtl rock_low_04SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd rock_Base_Color.jpg
+bump  -bm 1 rock_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks rock_Metallic.jpg
+Ns 0.00
+newmtl rock_low_05FBXASC032CopyFBXASC032CopySG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd rock_Base_Color.jpg
+bump  -bm 1 rock_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks rock_Metallic.jpg
+Ns 0.00
+newmtl rock_low_05FBXASC032CopySG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd rock_Base_Color.jpg
+bump  -bm 1 rock_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks rock_Metallic.jpg
+Ns 0.00
+newmtl rock_low_05FBXASC032Copy_ncl1_1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd rock_Base_Color.jpg
+bump  -bm 1 rock_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks rock_Metallic.jpg
+Ns 0.00
+newmtl tree_FBXASC032CopyFBXASC032CopyFBXASC032CopyFBXASC032CopySG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd tree_Base_Color.jpg
+bump  -bm 1 tree_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.02 0.02 0.02
+Ns 0.00
+newmtl tree_FBXASC032CopyFBXASC032CopyFBXASC032CopySG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd tree_Base_Color.jpg
+bump  -bm 1 tree_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.02 0.02 0.02
+Ns 0.00
+newmtl tree_FBXASC032CopyFBXASC032CopyFBXASC032Copy_ncl1_1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd tree_Base_Color.jpg
+bump  -bm 1 tree_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.02 0.02 0.02
+Ns 0.00
+newmtl tree_FBXASC032CopyFBXASC032CopyFBXASC032Copy_ncl1_2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd tree_Base_Color.jpg
+bump  -bm 1 tree_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.02 0.02 0.02
+Ns 0.00
+newmtl tree_FBXASC032CopyFBXASC032CopySG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd tree_Base_Color.jpg
+bump  -bm 1 tree_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.02 0.02 0.02
+Ns 0.00
+newmtl tree_FBXASC032CopyFBXASC032Copy_ncl1_1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd tree_Base_Color.jpg
+bump  -bm 1 tree_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.02 0.02 0.02
+Ns 0.00
+newmtl tree_FBXASC032CopyFBXASC032Copy_ncl1_2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd tree_Base_Color.jpg
+bump  -bm 1 tree_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.02 0.02 0.02
+Ns 0.00
+newmtl tree_FBXASC032CopyFBXASC032Copy_ncl1_3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd tree_Base_Color.jpg
+bump  -bm 1 tree_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.02 0.02 0.02
+Ns 0.00
+newmtl tree_FBXASC032CopyFBXASC032Copy_ncl1_4SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd tree_Base_Color.jpg
+bump  -bm 1 tree_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.02 0.02 0.02
+Ns 0.00
+newmtl tree_FBXASC032CopySG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd tree_Base_Color.jpg
+bump  -bm 1 tree_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.02 0.02 0.02
+Ns 0.00
+newmtl tree_SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.20 0.20 0.20
+Tf 1.00 1.00 1.00
+map_Kd tree_Base_Color.jpg
+bump  -bm 1 tree_Normal_OpenGL.jpg
+Ni 1.00
+Ks 0.02 0.02 0.02
+Ns 0.00
