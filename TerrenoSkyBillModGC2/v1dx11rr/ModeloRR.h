@@ -20,7 +20,8 @@ private:
 	{
 		D3DXVECTOR3 pos;
 		D3DXVECTOR2 UV;		
-		D3DXVECTOR3 normal;		
+		D3DXVECTOR3 normal;	
+		D3DXVECTOR3 tangente;
 		unsigned int aux1;
 		unsigned int aux2;
 		unsigned int aux3;
@@ -52,6 +53,7 @@ private:
 	ID3D11Buffer* viewCB;
 	ID3D11Buffer* projCB;
 	ID3D11Buffer* worldCB;
+	
 	D3DXMATRIX viewMatrix;
 	D3DXMATRIX projMatrix;
 
@@ -73,6 +75,7 @@ private:
 	float rotacionX;
 	float rotacionY;
 	vector3 Posicion;
+
 
 
 public:
@@ -163,7 +166,8 @@ public:
 			{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
 			{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
 			{ "NORMAL", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0},
-			{ "COLOR", 0, DXGI_FORMAT_R32G32B32_UINT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0}
+			{ "COLOR", 0, DXGI_FORMAT_R32G32B32_UINT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0},
+			{ "TANGENT", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0}
 		};
 
 		unsigned int totalLayoutElements = ARRAYSIZE(solidColorLayout);
@@ -293,6 +297,7 @@ public:
 			return false;
 		}
 
+
 		//posicion de la camara
 		D3DXVECTOR3 eye = D3DXVECTOR3(0.0f, 100.0f, 200.0f);
 		//a donde ve
@@ -383,7 +388,6 @@ public:
 		D3DXMatrixRotationY(&ry, 0.01);
 		viewMatrix *= ry;
 
-		//D3DXMATRIX worldMat = rotationMat;//= rotationMat * translationMat;
 		D3DXMATRIX worldMat;
 		D3DXMatrixMultiply(&worldMat, &rotationMat, &translationMat);
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////		
@@ -403,7 +407,8 @@ public:
 
 	}
 
-
+	
+	/*
 	void CargaModelos(const char NomOBJ[])
 	{
 		vector<vector3> verticesM;
@@ -498,6 +503,188 @@ public:
 		{
 			indices[i] = vertexIndices[i] - 1;
 		}
+		int u = 0;
+	}*/
+	void CargaModelos(const char NomOBJ[])
+	{
+		vector<vector3> verticesM;
+		vector<vector2> uvs;
+		vector<vector3> normales;
+		vector<int> vertexIndices;
+		vector<int> uvIndices;
+		vector<int> normalIndices;
+
+		errno_t err;
+		FILE* file;
+		err = fopen_s(&file, NomOBJ, "r");
+		if (file == NULL) {
+			printf("Impossible to open the file !\n");
+			return;
+		}
+
+		while (1)
+		{
+			char lineHeader[128];
+			// Lee la primera palabra de la línea
+			int res = fscanf_s(file, "%s", lineHeader, 128);
+			if (res == EOF)
+				break; // EOF = End Of File, es decir, el final del archivo. Se finaliza el ciclo.
+
+			if (strcmp(lineHeader, "v") == 0)
+			{
+				vector3 vertex;
+				fscanf_s(file, "%f %f %f\n", &vertex.x, &vertex.y, &vertex.z);
+				verticesM.push_back(vertex);
+			}
+			else if (strcmp(lineHeader, "vt") == 0)
+			{
+				vector2 uv;
+				fscanf_s(file, "%f %f\n", &uv.u, &uv.v);
+				uvs.push_back(uv);
+			}
+			else if (strcmp(lineHeader, "vn") == 0) {
+				vector3 normal;
+				fscanf_s(file, "%f %f %f\n", &normal.x, &normal.y, &normal.z);
+				normales.push_back(normal);
+			}
+			else if (strcmp(lineHeader, "f") == 0) {
+				std::string vertex1, vertex2, vertex3;
+				unsigned int vertexIndex[3], uvIndex[3], normalIndex[3];
+				int matches = fscanf_s(file, "%d/%d/%d %d/%d/%d %d/%d/%d\n",
+					&vertexIndex[0], &uvIndex[0], &normalIndex[0],
+					&vertexIndex[1], &uvIndex[1], &normalIndex[1],
+					&vertexIndex[2], &uvIndex[2], &normalIndex[2]);
+				if (matches != 9) {
+					printf("File can't be read by our simple parser : ( Try exporting with other options\n");
+					return;
+				}
+				vertexIndices.push_back(vertexIndex[0]);
+				vertexIndices.push_back(vertexIndex[1]);
+				vertexIndices.push_back(vertexIndex[2]);
+				uvIndices.push_back(uvIndex[0]);
+				uvIndices.push_back(uvIndex[1]);
+				uvIndices.push_back(uvIndex[2]);
+				normalIndices.push_back(normalIndex[0]);
+				normalIndices.push_back(normalIndex[1]);
+				normalIndices.push_back(normalIndex[2]);
+			}
+		}
+
+		vector<VertexComponent> tempoVertices;
+		vector<unsigned int> tempoIndices;
+
+		for (int i = 0; i < vertexIndices.size(); i++)
+		{
+			VertexComponent aux;
+			aux.pos.x = verticesM[vertexIndices[i] - 1].x * escala;
+			aux.pos.y = verticesM[vertexIndices[i] - 1].y * escala;
+			aux.pos.z = verticesM[vertexIndices[i] - 1].z * escala;
+			aux.normal.x = normales[normalIndices[i] - 1].x;
+			aux.normal.y = normales[normalIndices[i] - 1].y;
+			aux.normal.z = normales[normalIndices[i] - 1].z;
+			aux.UV.x = uvs[uvIndices[i] - 1].u;
+			aux.UV.y = 1 - uvs[uvIndices[i] - 1].v; //por que esta volteada la textura? no lo se, por eso le reste de 1
+			//para enderezarla
+
+			tempoVertices.push_back(aux);
+		}
+
+		cantvert = tempoVertices.size();
+		cantind = tempoVertices.size();
+
+		vertices = new VertexComponent[tempoVertices.size()];
+		indices = new UINT[tempoVertices.size()];
+
+		for (int i = 0; i < tempoVertices.size(); i++)
+		{
+			vertices[i] = tempoVertices[i];
+
+			indices[i] = i;
+		}
+
+		for (int i = 0; i < tempoVertices.size(); i += 3)
+		{
+			D3DXVECTOR3 edge1;
+			edge1 = vertices[indices[i] + 2].pos - vertices[indices[i]].pos;
+
+			D3DXVECTOR3 edge2;
+			edge2 = vertices[indices[i] + 1].pos - vertices[indices[i]].pos;
+
+
+			float d1 = sqrt(vertices[indices[i] + 2].UV.x * vertices[indices[i] + 2].UV.x
+				+ vertices[indices[i] + 2].UV.y * vertices[indices[i] + 2].UV.y);
+			float d2 = sqrt(vertices[indices[i]].UV.x * vertices[indices[i]].UV.x
+				+ vertices[indices[i]].UV.y * vertices[indices[i]].UV.y);
+			float d3 = sqrt(vertices[indices[i] + 1].UV.x * vertices[indices[i] + 1].UV.x
+				+ vertices[indices[i] + 1].UV.y * vertices[indices[i] + 1].UV.y);
+
+			vector2 deltaUV1;
+			float ddu1, ddu2;
+			float ddv1, ddv2;
+			float ddu3, ddv3;
+
+			if (abs(d1) > 0.0001)
+				ddu1 = vertices[indices[i] + 2].UV.x / d1;
+			else
+				ddu1 = 1000;
+
+			if (abs(d2) > 0.0001)
+				ddu2 = vertices[indices[i]].UV.x / d2;
+			else
+				ddu2 = 1000;
+
+			if (abs(d1) > 0.0001)
+				ddv1 = vertices[indices[i] + 2].UV.y / d1;
+			else
+				ddv1 = 1000;
+
+			if (abs(d2) > 0.0001)
+				ddv2 = vertices[indices[i]].UV.y / d2;
+			else
+				ddv2 = 1000;
+
+			if (abs(d3) > 0.0001)
+				ddu3 = vertices[indices[i] + 1].UV.x / d3;
+			else
+				ddu3 = 1000;
+
+			if (abs(d3) > 0.0001)
+				ddv3 = vertices[indices[i] + 1].UV.y / d3;
+			else
+				ddv3 = 1000;
+
+			deltaUV1.u = ddu1 - ddu2;
+			deltaUV1.v = ddv1 - ddv2;
+			vector2 deltaUV2;
+			deltaUV2.u = ddu3 - ddu2;
+			deltaUV2.v = ddv3 - ddv2;
+
+
+			float denom = (deltaUV1.u * deltaUV2.v - deltaUV2.u * deltaUV1.v);
+			if (abs(denom) < 0.0001)
+				denom = 0.001;
+			float f = 1.0f / denom;
+
+			D3DXVECTOR3 tangent;
+			tangent.x = f * (deltaUV2.v * edge1.x - deltaUV1.v * edge2.x);
+			tangent.y = f * (deltaUV2.v * edge1.y - deltaUV1.v * edge2.y);
+			tangent.z = f * (deltaUV2.v * edge1.z - deltaUV1.v * edge2.z);
+			D3DXVec3Normalize(&tangent, &tangent);
+
+
+			vertices[indices[i]].tangente = tangent;
+
+			vertices[indices[i] + 1].tangente = tangent;
+
+			vertices[indices[i] + 2].tangente = tangent;
+
+			if (i > 3068)
+			{
+				int p = 0;
+			}
+
+		}
+
 		int u = 0;
 	}
 

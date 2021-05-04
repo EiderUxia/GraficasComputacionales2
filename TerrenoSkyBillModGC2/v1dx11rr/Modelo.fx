@@ -1,5 +1,4 @@
 Texture2D colorMap : register(t0);
-
 SamplerState colorSampler : register(s0);
 
 cbuffer cbChangerEveryFrame : register(b0)
@@ -17,12 +16,15 @@ cbuffer cbChangeOnResize : register(b2)
 	matrix projMatrix;
 };
 
+
+
 struct VS_Input
 {
 	float4 pos : POSITION;
 	float2 tex0 : TEXCOORD0;	
 	float3 normal : NORMAL0;
 	uint3  aux  : COLOR0;
+	float3 tangente : TANGENT0;
 };
 
 struct PS_Input
@@ -31,6 +33,9 @@ struct PS_Input
 	float2 tex0 : TEXCOORD0;	
 	float3 normal : TEXCOORD1;
 	uint3  auxes : COLOR0;
+	float3 tangente : TEXCOORD2;
+	float3 binormal : TEXCOORD3;
+
 };
 
 PS_Input VS_Main(VS_Input vertex)
@@ -41,8 +46,16 @@ PS_Input VS_Main(VS_Input vertex)
 	vsOut.pos = mul(vsOut.pos, projMatrix);
 
 	vsOut.tex0 = vertex.tex0;	
+	/*
 	vsOut.normal = normalize(mul(vertex.normal, worldMatrix));	
-	vsOut.auxes = vertex.aux;
+	vsOut.auxes = vertex.aux;*/
+	vsOut.tangente = normalize(mul(vertex.tangente, worldMatrix));
+	vsOut.normal = normalize(mul(vertex.normal, worldMatrix));
+	vsOut.tangente = normalize(vsOut.tangente - vsOut.normal * dot(vsOut.normal, vsOut.tangente));
+	vsOut.binormal = normalize(cross(vsOut.normal, vsOut.tangente));
+
+
+
 	return vsOut;
 }
 
@@ -50,7 +63,7 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 {
 	float4 fColor = float4(1,0,0,1);
 
-	float3 ambient = float3(0.1f, 0.1f, 0.1f);
+	float3 ambient = float3(1.1f, 1.1f, 1.1f);
 
 	float4 text = colorMap.Sample(colorSampler, pix.tex0);	
 
