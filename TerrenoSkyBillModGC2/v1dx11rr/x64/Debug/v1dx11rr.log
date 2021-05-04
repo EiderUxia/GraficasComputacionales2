@@ -1,9 +1,4 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(519,5): warning MSB8028: El directorio intermedio (x64\Debug\) contiene archivos compartidos de otro proyecto (Terreno.vcxproj, TerrenoSky.vcxproj). Esto puede dar lugar a un comportamiento incorrecto de limpieza y recompilación.
-  compilation object save succeeded; see C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\x64\Debug\Billboard.cso
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\Modelo.fx(44,27-57): warning X3206: 'mul': implicit truncation of vector type
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\Modelo.fx(44,2-58): warning X3206: implicit truncation of vector type
-  
-  compilation object save succeeded; see C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\x64\Debug\Modelo.cso
   TerrenoSkyBill.cpp
 C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(12,1): warning C4005: 'DXGI_STATUS_OCCLUDED': redefinición de macro
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56388): message : vea la definición anterior de 'DXGI_STATUS_OCCLUDED'
@@ -61,38 +56,37 @@ C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\d3d10.h(608,1):
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56841): message : vea la definición anterior de 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
 C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\d3d10.h(609,1): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': redefinición de macro
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56850): message : vea la definición anterior de 'D3D10_ERROR_FILE_NOT_FOUND'
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\TerrenoRR.h(218,85): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\TerrenoRR.h(330,63): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\TerrenoRR.h(330,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\TerrenoRR.h(408,1): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\TerrenoRR.h(448,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\TerrenoRR.h(511,21): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\TerrenoRR.h(513,19): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\Camara.h(37,63): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\Camara.h(37,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\Billboard.h(339,14): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\Billboard.h(340,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\ModeloRR.h(303,64): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\ModeloRR.h(303,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\ModeloRR.h(352,1): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\ModeloRR.h(381,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\ModeloRR.h(474,1): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\ModeloRR.h(475,1): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(69,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(70,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(71,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(72,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(73,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(76,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(260,56): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\Movimiento.h(27,27): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\Movimiento.h(29,26): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\Movimiento.h(36,27): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\Movimiento.h(38,28): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\TerrenoSkyBill.cpp(78,15): warning C4244: 'return': conversión de 'WPARAM' a 'int'; posible pérdida de datos
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\TerrenoSkyBill.cpp(110,26): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\TerrenoSkyBill.cpp(116,27): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\TerrenoSkyBill.cpp(121,27): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\TerrenoSkyBill.cpp(127,28): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\v1dx11rr\TerrenoSkyBill.cpp(130,58): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-  v1dx11rr.vcxproj -> C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\x64\Debug\TerrenoSkyBill.exe
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\TerrenoRR.h(218,85): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\TerrenoRR.h(330,63): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\TerrenoRR.h(330,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\TerrenoRR.h(408,1): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\TerrenoRR.h(448,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\TerrenoRR.h(511,21): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\TerrenoRR.h(513,19): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\Camara.h(37,63): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\Camara.h(37,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\Billboard.h(339,14): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\Billboard.h(340,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\ModeloRR.h(305,64): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\ModeloRR.h(305,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\ModeloRR.h(354,1): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\ModeloRR.h(383,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\ModeloRR.h(476,1): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\ModeloRR.h(477,1): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(75,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(76,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(77,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(78,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(79,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(274,56): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\Movimiento.h(27,27): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\Movimiento.h(29,26): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\Movimiento.h(36,27): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\Movimiento.h(38,28): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\TerrenoSkyBill.cpp(77,15): warning C4244: 'return': conversión de 'WPARAM' a 'int'; posible pérdida de datos
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\TerrenoSkyBill.cpp(109,26): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\TerrenoSkyBill.cpp(115,27): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\TerrenoSkyBill.cpp(120,27): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\TerrenoSkyBill.cpp(126,28): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\TerrenoSkyBill.cpp(129,58): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+  v1dx11rr.vcxproj -> C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\x64\Debug\TerrenoSkyBill.exe

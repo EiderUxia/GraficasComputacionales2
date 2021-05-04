@@ -71,11 +71,12 @@ private:
 	///////////////////////////////////////////////////////////
  	float escala;
 	float rotacionX;
+	float rotacionY;
 	vector3 Posicion;
 
 
 public:
-	ModeloRR(ID3D11Device* D3DDevice, ID3D11DeviceContext* D3DContext, const char NomOBJ[], WCHAR* diffuseTex, float esc, float rx, float x, float y, float z)
+	ModeloRR(ID3D11Device* D3DDevice, ID3D11DeviceContext* D3DContext, const char NomOBJ[], WCHAR* diffuseTex, float esc, float rx, float ry, float x, float y, float z)
 	{
 
 		//copiamos el device y el device context a la clase terreno
@@ -83,6 +84,7 @@ public:
 		d3dDevice = D3DDevice;	
 		escala = esc;
 		rotacionX = rx;
+		rotacionY = ry;
 		Posicion.x = x;
 		Posicion.y = y;
 		Posicion.z = z;
@@ -374,7 +376,7 @@ public:
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		//mueve
 		D3DXMATRIX rotationMat;
-		D3DXMatrixRotationYawPitchRoll(&rotationMat, rotacionX, 0.0f, 0.0f);
+		D3DXMatrixRotationYawPitchRoll(&rotationMat, rotacionX, rotacionY, 0.0f);
 		D3DXMATRIX translationMat;
 		D3DXMatrixTranslation(&translationMat, Posicion.x, Posicion.y, Posicion.z);
 		D3DXMATRIX ry;

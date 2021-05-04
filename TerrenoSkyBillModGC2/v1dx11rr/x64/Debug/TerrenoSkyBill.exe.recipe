@@ -2,15 +2,15 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\x64\Debug\TerrenoSkyBill.exe</FullPath>
+      <FullPath>C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\x64\Debug\TerrenoSkyBill.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles>
     <ContentFile>
-      <FullPath>C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\x64\Debug\Billboard.cso</FullPath>
+      <FullPath>C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\x64\Debug\Billboard.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>C:\Users\RGamer\Documents\Facultad\Graficas Computacionales 2\V4\TerrenoSkyBillModGC2\x64\Debug\Modelo.cso</FullPath>
+      <FullPath>C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\x64\Debug\Modelo.cso</FullPath>
     </ContentFile>
   </ContentFiles>
   <SatelliteDlls />

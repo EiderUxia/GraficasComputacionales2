@@ -1,0 +1,17 @@
+# 3ds Max Wavefront OBJ Exporter v0.99 - (c)2007 guruware
+# File Created: 04.05.2021 14:00:19
+
+newmtl Cott_Cottage_lambert2SG1
+	Kd 0.8000 0.8000 0.8000
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 0.0000 0.0000 0.0000
+	Pr 0.8957
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5200
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\Modelos\A1\A1.fbm\cottage_diffuse.png
