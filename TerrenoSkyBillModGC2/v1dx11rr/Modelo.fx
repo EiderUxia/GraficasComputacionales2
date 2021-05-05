@@ -1,4 +1,5 @@
 Texture2D colorMap : register(t0);
+
 SamplerState colorSampler : register(s0);
 
 cbuffer cbChangerEveryFrame : register(b0)
@@ -16,6 +17,11 @@ cbuffer cbChangeOnResize : register(b2)
 	matrix projMatrix;
 };
 
+cbuffer LuzAmb : register(b3)
+{
+	float3 LuzAmbiental;
+	float FAA;
+};
 
 
 struct VS_Input
@@ -35,7 +41,8 @@ struct PS_Input
 	uint3  auxes : COLOR0;
 	float3 tangente : TEXCOORD2;
 	float3 binormal : TEXCOORD3;
-
+	float3 LAmb : TEXCOORD4;
+	float Faa : TEXCOORD5;
 };
 
 PS_Input VS_Main(VS_Input vertex)
@@ -54,16 +61,27 @@ PS_Input VS_Main(VS_Input vertex)
 	vsOut.tangente = normalize(vsOut.tangente - vsOut.normal * dot(vsOut.normal, vsOut.tangente));
 	vsOut.binormal = normalize(cross(vsOut.normal, vsOut.tangente));
 
-
+	vsOut.LAmb = LuzAmbiental;
+	vsOut.Faa = FAA;
 
 	return vsOut;
 }
 
 float4 PS_Main(PS_Input pix) : SV_TARGET
 {
+	///////////////////////////////////////////
+	//APORTACION AMBIENTAL
+	///////////////////////////////////////////
+
+	float4 LuzAmbiental = float4 (pix.LAmb, 1.0);
+	float FAA = pix.Faa;  //se controla del cpu segun la hora del dia
+	float4 AportAmbiental;
+	AportAmbiental = LuzAmbiental * FAA;
+	float4 textColor = colorMap.Sample(colorSampler, pix.tex0);
+	/*
 	float4 fColor = float4(1,0,0,1);
 
-	float3 ambient = float3(1.1f, 1.1f, 1.1f);
+	float3 ambient = float3(1.0f, 1.0f, 1.0f);
 
 	float4 text = colorMap.Sample(colorSampler, pix.tex0);	
 
@@ -77,7 +95,9 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 	fColor = float4(text.rgb * diffuse, 1.0f);
 
 	if (pix.auxes.x == 2)
-		fColor = float4(1, 0, 0, 1);
+		fColor = float4(1, 0, 0, 1);*/
 
-	return fColor;
+	textColor = textColor * (AportAmbiental);
+
+	return textColor;
 }
