@@ -1,4 +1,5 @@
 Texture2D colorMap : register(t0);
+Texture2D normalMap : register(t1);
 
 SamplerState colorSampler : register(s0);
 
@@ -78,26 +79,23 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 	float4 AportAmbiental;
 	AportAmbiental = LuzAmbiental * FAA;
 	float4 textColor = colorMap.Sample(colorSampler, pix.tex0);
-	/*
-	float4 fColor = float4(1,0,0,1);
+	
+	///////////////////////////////////////////
+	//APORTACION DIFUSA
+	///////////////////////////////////////////
+	float3 DirLuz = float3(5, 10, 2);
+	float4 LuzDifusa = float4(1, 1, 1, 1);
+	DirLuz = normalize(DirLuz);
+	float FAD = 0.5;
+	float4 textNorm = normalMap.Sample(colorSampler, pix.tex0);
+	float3 bump = normalize(2.0 * textNorm - 1.0);
+	float3x3 TBN = { pix.tangente, pix.binormal, pix.normal };
+	float3 bumpTBN = mul(normalize(bump), TBN);
+	float FALL = dot(normalize(bumpTBN), DirLuz);
+	float4 AportLuzDif = saturate(LuzDifusa * FALL * FAD);
 
-	float3 ambient = float3(1.0f, 1.0f, 1.0f);
-
-	float4 text = colorMap.Sample(colorSampler, pix.tex0);	
-
-	float3 DiffuseDirection = float3(0.0f, -1.0f, 0.2f);
-	float4 DiffuseColor = float4(1.0f, 1.0f, 1.0f, 1.0f);
-	float3 normal2 = normalize(pix.normal);
-	float3 diffuse = dot(-DiffuseDirection, normal2);
-	diffuse = saturate(diffuse * DiffuseColor.rgb);
-	diffuse = saturate(diffuse + ambient);
-
-	fColor = float4(text.rgb * diffuse, 1.0f);
-
-	if (pix.auxes.x == 2)
-		fColor = float4(1, 0, 0, 1);*/
-
-	textColor = textColor * (AportAmbiental);
+	textColor = textColor * (AportAmbiental + AportLuzDif);
+	//textColor = textColor * (AportAmbiental);
 
 	return textColor;
 }

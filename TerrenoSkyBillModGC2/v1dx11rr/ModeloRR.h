@@ -53,6 +53,7 @@ private:
 	ID3D11Buffer* indexBuffer;
 
 	ID3D11ShaderResourceView* colorMap;
+	ID3D11ShaderResourceView* normalMap;
 	ID3D11SamplerState* colorMapSampler;
 
 	ID3D11Buffer* viewCB;
@@ -85,7 +86,7 @@ private:
 
 
 public:
-	ModeloRR(ID3D11Device* D3DDevice, ID3D11DeviceContext* D3DContext, const char NomOBJ[], WCHAR* diffuseTex, float esc, float rx, float ry, float x, float y, float z)
+	ModeloRR(ID3D11Device* D3DDevice, ID3D11DeviceContext* D3DContext, const char NomOBJ[], WCHAR* diffuseTex, WCHAR* normal, float esc, float rx, float ry, float x, float y, float z)
 	{
 
 		//copiamos el device y el device context a la clase terreno
@@ -99,7 +100,7 @@ public:
 		Posicion.z = z;
 
 		//aqui cargamos las texturas de alturas y el cesped
-		CargaParametros(NomOBJ, diffuseTex);
+		CargaParametros(NomOBJ, diffuseTex, normal);
 		
 	}
 
@@ -136,7 +137,7 @@ public:
 		return true;
 	}
 
-	bool CargaParametros(const char NomOBJ[], WCHAR* diffuseTex)
+	bool CargaParametros(const char NomOBJ[], WCHAR* diffuseTex, WCHAR* normal)
 	{
 		HRESULT d3dResult;
 		
@@ -253,6 +254,7 @@ public:
 		
 		//crea los accesos de las texturas para los shaders 
 		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, diffuseTex, 0, 0, &colorMap, 0);
+		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, normal, 0, 0, &normalMap, 0);
 		
 		if (FAILED(d3dResult))
 		{
@@ -346,6 +348,8 @@ public:
 	{
 		if (colorMapSampler)
 			colorMapSampler->Release();
+		if (normalMap)
+			normalMap->Release();
 		if (colorMap)
 			colorMap->Release();
 		if (VertexShaderVS)
@@ -363,7 +367,7 @@ public:
 		if (worldCB)
 			worldCB->Release();
 		
-
+		normalMap = 0;
 		colorMapSampler = 0;
 		colorMap = 0;
 		VertexShaderVS = 0;
@@ -403,7 +407,8 @@ public:
 		d3dContext->VSSetShader(VertexShaderVS, 0, 0);
 		d3dContext->PSSetShader(solidColorPS, 0, 0);
 		//pasa lo sbuffers al shader
-		d3dContext->PSSetShaderResources(0, 1, &colorMap);		
+		d3dContext->PSSetShaderResources(0, 1, &colorMap);	
+		d3dContext->PSSetShaderResources(1, 1, &normalMap);
 		d3dContext->PSSetSamplers(0, 1, &colorMapSampler);
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		//mueve

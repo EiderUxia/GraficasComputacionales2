@@ -81,8 +81,8 @@ public:
 		//avion = new ModeloRR(d3dDevice, d3dContext, "Modelos/A3/A3.obj", L"Modelos/A3/texture.jpg", 5, 1, 4.7, 0, 20, 0);
 		//horse = new ModeloRR(d3dDevice, d3dContext, "Modelos/A4/A4.obj", L"Modelos/A4/Horse.jpg", 1, 5, 4.7, 10, 20, 10);
 		
-		modelazo = new ModeloRR(d3dDevice, d3dContext,"Modelos/P1/Bridge.obj", L"Modelos/P1/Bridge_BaseColor.jpg", 0.5, 5, 0, 10, 10, 10);
-		//cottage = new ModeloRR(d3dDevice, d3dContext, "Modelos/A1/Co.obj", L"Modelos/A1/cottage_diffuse.jpg", .3, 0, 0, 10, 20, 10);
+		//modelazo = new ModeloRR(d3dDevice, d3dContext,"Modelos/P1/Bridge.obj", L"Modelos/P1/Bridge_BaseColor.jpg", L"Modelos/P1/Bridge_BaseColor.jpg", 0.5, 5, 0, 10, 10, 10);
+		cottage = new ModeloRR(d3dDevice, d3dContext, "Modelos/A1/Co.obj", L"Modelos/A1/cottage_diffuse.jpg", L"Modelos/A1/cottage_normal.jpg", .25, 0, 4.71, 10, 10, 10);
 		//cow = new ModeloRR(d3dDevice, d3dContext, "Modelos/A2/A2.obj", L"grass.jpg", 5, 5, 0, 10, 10, 10);		
 		//house01 = new ModeloRR(d3dDevice, d3dContext, "Modelos/A5/House01.obj", L"Modelos/A5/texture.jpg", 1, 5, 0, 10, 20, 10);
 		//house02 = new ModeloRR(d3dDevice, d3dContext, "Modelos/A6/House02.obj", L"Modelos/A6/texture1.jpg", 1, 5, 0, 10, 15, 10);
@@ -282,8 +282,8 @@ public:
 		//horse->Draw(camara->vista, camara->proyeccion);
 
 		 
-		modelazo->Draw(camara->vista, camara->proyeccion);
-		//cottage->Draw(camara->vista, camara->proyeccion);
+		//modelazo->Draw(camara->vista, camara->proyeccion);
+		cottage->Draw(camara->vista, camara->proyeccion);
 		//cow->Draw(camara->vista, camara->proyeccion);		
 		//house01->Draw(camara->vista, camara->proyeccion);
 		//house02->Draw(camara->vista, camara->proyeccion);
