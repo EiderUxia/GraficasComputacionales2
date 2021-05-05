@@ -23,6 +23,17 @@ cbuffer LuzAmb : register(b3)
 	float3 LuzAmbiental;
 	float FAA;
 };
+cbuffer LuzDif : register(b4)
+{
+	float3 LuzDifusa;
+	float FAD;
+};
+
+cbuffer DirLuz : register(b5)
+{
+	float3 Direccion;
+	float padding;
+};
 
 
 struct VS_Input
@@ -39,11 +50,11 @@ struct PS_Input
 	float4 pos : SV_POSITION;
 	float2 tex0 : TEXCOORD0;	
 	float3 normal : TEXCOORD1;
-	uint3  auxes : COLOR0;
 	float3 tangente : TEXCOORD2;
 	float3 binormal : TEXCOORD3;
-	float3 LAmb : TEXCOORD4;
-	float Faa : TEXCOORD5;
+
+	float3 ApAmb : COLOR0;
+	float3 DireccionLuz : COLOR1;
 };
 
 PS_Input VS_Main(VS_Input vertex)
@@ -54,16 +65,13 @@ PS_Input VS_Main(VS_Input vertex)
 	vsOut.pos = mul(vsOut.pos, projMatrix);
 
 	vsOut.tex0 = vertex.tex0;	
-	/*
-	vsOut.normal = normalize(mul(vertex.normal, worldMatrix));	
-	vsOut.auxes = vertex.aux;*/
 	vsOut.tangente = normalize(mul(vertex.tangente, worldMatrix));
 	vsOut.normal = normalize(mul(vertex.normal, worldMatrix));
 	vsOut.tangente = normalize(vsOut.tangente - vsOut.normal * dot(vsOut.normal, vsOut.tangente));
 	vsOut.binormal = normalize(cross(vsOut.normal, vsOut.tangente));
 
-	vsOut.LAmb = LuzAmbiental;
-	vsOut.Faa = FAA;
+	vsOut.ApAmb = LuzAmbiental * FAA;
+	vsOut.DireccionLuz = normalize(Direccion);
 
 	return vsOut;
 }
@@ -73,29 +81,31 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 	///////////////////////////////////////////
 	//APORTACION AMBIENTAL
 	///////////////////////////////////////////
-
-	float4 LuzAmbiental = float4 (pix.LAmb, 1.0);
-	float FAA = pix.Faa;  //se controla del cpu segun la hora del dia
-	float4 AportAmbiental;
-	AportAmbiental = LuzAmbiental * FAA;
+	float4 AportAmbiental = float4(pix.ApAmb, 0);
+	//float4 AportAmbiental = float4((LuzAmbiental * FAA),0);
 	float4 textColor = colorMap.Sample(colorSampler, pix.tex0);
 	
 	///////////////////////////////////////////
 	//APORTACION DIFUSA
 	///////////////////////////////////////////
-	float3 DirLuz = float3(5, 10, 2);
-	float4 LuzDifusa = float4(1, 1, 1, 1);
-	DirLuz = normalize(DirLuz);
-	float FAD = 0.5;
 	float4 textNorm = normalMap.Sample(colorSampler, pix.tex0);
 	float3 bump = normalize(2.0 * textNorm - 1.0);
 	float3x3 TBN = { pix.tangente, pix.binormal, pix.normal };
 	float3 bumpTBN = mul(normalize(bump), TBN);
-	float FALL = dot(normalize(bumpTBN), DirLuz);
-	float4 AportLuzDif = saturate(LuzDifusa * FALL * FAD);
+
+	//float3 DirLuz = float3(5, 10, 2); //---------------
+	//float3 DirLuz = Direccion;
+	//DirLuz = normalize(DirLuz);//--------------------- 
+	//float3 DirLuz = pix.DireccionLuz;
+	
+	float FALL = dot(normalize(bumpTBN), pix.DireccionLuz);
+	float4 LuzDif = float4(LuzDifusa, 0);
+
+	float4 AportLuzDif = saturate(LuzDif * FALL * FAD);
 
 	textColor = textColor * (AportAmbiental + AportLuzDif);
 	//textColor = textColor * (AportAmbiental);
+	//textColor = textColor * (AportLuzDif);
 
 	return textColor;
 }

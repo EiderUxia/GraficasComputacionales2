@@ -66,27 +66,7 @@ PS_Input VS_Main(VS_Input vertex)
 
 float4 PS_Main(PS_Input pix) : SV_TARGET
 {
-	/*	
-	float4 fColor = float4(1,0,0,1);
-	float3 ambient = float3(0.1f, 0.1f, 0.1f);
-
-	float4 text = colorMap.Sample(colorSampler, pix.tex0);
-	float4 text2 = colorMap2.Sample(colorSampler, pix.tex0);
-
-	float3 bump = 2.0 * text2 - 1.0;
-	float3x3 TBN = { {pix.tangent}, {pix.binorm}, {pix.normal} };
-	float3 newnormal = mul(TBN, bump);
-
-	float3 DiffuseDirection = float3(0.0f, -1.0f, 0.2f);
-	float4 DiffuseColor = float4(1.0f, 1.0f, 1.0f, 1.0f);
-
-	float3 diffuse = dot(-DiffuseDirection, newnormal);
-	diffuse = saturate(diffuse*DiffuseColor.rgb);
-	diffuse = saturate(diffuse + ambient);
-
-	fColor = float4(text.rgb * diffuse, 1.0f);
-	*/
-
+	
 	float4 fColor;
 
 	float4 Grass = TexTerr1.Sample(colorSampler, pix.tex0);
