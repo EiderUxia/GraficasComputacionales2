@@ -103,7 +103,7 @@ public:
 		this->ancho = ancho;
 		this->alto = alto;
 		//aqui cargamos las texturas de alturas y el cesped
-		CargaParametros(L"Alturas2.jpg", 60.0f);
+		CargaParametros(L"Alturas2.jpg", 150.0f);
 	}
 
 	~TerrenoRR()
@@ -282,14 +282,14 @@ public:
 		estableceIndices();
 		//crea los accesos de las texturas para los shaders 
 		d3dResult = D3DX11CreateShaderResourceViewFromFile( d3dDevice, L"Text/Grass_normal.jpg", 0, 0, &TexTerr1NM, 0 );
-		d3dResult = D3DX11CreateShaderResourceViewFromFile( d3dDevice, L"Text/Ground_normal.jpg", 0, 0, &TexTerr2NM, 0 );
+		d3dResult = D3DX11CreateShaderResourceViewFromFile( d3dDevice, L"Text/Mud_normal.jpg", 0, 0, &TexTerr2NM, 0 );
 		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, L"Text/Pebbles_Normal.jpg", 0, 0, &TexTerr3NM, 0);
 		d3dResult = D3DX11CreateShaderResourceViewFromFile( d3dDevice, L"Blend1.jpg", 0, 0, &blendMap, 0 );
 
 		//***************************************************************************************************************************************//
 		//***************************************************************************************************************************************//
 		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, L"Text/Grass_BC.jpg", 0, 0, &TexTerr1, 0);
-		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, L"Text/Ground_BC.jpg", 0, 0, &TexTerr2, 0);
+		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, L"Text/Mud_baseColor.jpg", 0, 0, &TexTerr2, 0);
 		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, L"Text/Pebbles_BC.jpg", 0, 0, &TexTerr3, 0);
 		//***************************************************************************************************************************************//
 		//***************************************************************************************************************************************//
