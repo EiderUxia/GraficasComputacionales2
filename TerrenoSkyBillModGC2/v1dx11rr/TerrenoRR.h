@@ -26,6 +26,22 @@ private:
 		D3DXVECTOR3 pos;		
 	};
 
+	struct LuzAmbientalS {
+		D3DXVECTOR3 ColorLuzAmbiental;
+		float FA;
+	};
+
+	struct LuxDifusaS {
+		D3DXVECTOR3 Color;
+		float FAD;
+	};
+
+	struct DirLuzS {
+		D3DXVECTOR3 Dir;
+		float Padding;
+	};
+
+
 	ID3D11VertexShader* VertexShaderVS;
 	ID3D11PixelShader* solidColorPS;
 
@@ -33,8 +49,9 @@ private:
 	ID3D11Buffer* vertexBuffer;
 	ID3D11Buffer* indexBuffer;
 
-	ID3D11ShaderResourceView* colorMap;
-	ID3D11ShaderResourceView* colorMap2;
+	ID3D11ShaderResourceView* TexTerr1NM;
+	ID3D11ShaderResourceView* TexTerr2NM;
+	ID3D11ShaderResourceView* TexTerr3NM;
 	ID3D11ShaderResourceView* blendMap;
 	ID3D11SamplerState* colorMapSampler;
 
@@ -44,6 +61,15 @@ private:
 	ID3D11ShaderResourceView* TexTerr1;
 	ID3D11ShaderResourceView* TexTerr2;
 	ID3D11ShaderResourceView* TexTerr3;
+
+	ID3D11Buffer* LuzAmbiental;
+	LuzAmbientalS SLA;
+
+	ID3D11Buffer* LuzDifusa;
+	LuxDifusaS SLD;
+
+	ID3D11Buffer* DirLuz;
+	DirLuzS SDL;
 	//***************************************************************************************************************************************//
 	//***************************************************************************************************************************************//
 
@@ -77,7 +103,7 @@ public:
 		this->ancho = ancho;
 		this->alto = alto;
 		//aqui cargamos las texturas de alturas y el cesped
-		CargaParametros(L"Text/Grass_BC.jpg", L"Alturas2.jpg", 60.0f);
+		CargaParametros(L"Alturas2.jpg", 60.0f);
 	}
 
 	~TerrenoRR()
@@ -113,7 +139,7 @@ public:
 		return true;
 	}
 
-	bool CargaParametros(WCHAR* diffuseTex, WCHAR* heightTex, float tile)
+	bool CargaParametros( WCHAR* heightTex, float tile)
 	{
 		HRESULT d3dResult;
 		//carga el mapa de alturas
@@ -255,8 +281,9 @@ public:
 		//creamos los indices para hacer el terreno
 		estableceIndices();
 		//crea los accesos de las texturas para los shaders 
-		d3dResult = D3DX11CreateShaderResourceViewFromFile( d3dDevice, diffuseTex, 0, 0, &colorMap, 0 );
-		d3dResult = D3DX11CreateShaderResourceViewFromFile( d3dDevice, L"Piedras_normal.jpg", 0, 0, &colorMap2, 0 );
+		d3dResult = D3DX11CreateShaderResourceViewFromFile( d3dDevice, L"Text/Grass_normal.jpg", 0, 0, &TexTerr1NM, 0 );
+		d3dResult = D3DX11CreateShaderResourceViewFromFile( d3dDevice, L"Text/Ground_normal.jpg", 0, 0, &TexTerr2NM, 0 );
+		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, L"Text/Pebbles_Normal.jpg", 0, 0, &TexTerr3NM, 0);
 		d3dResult = D3DX11CreateShaderResourceViewFromFile( d3dDevice, L"Blend1.jpg", 0, 0, &blendMap, 0 );
 
 		//***************************************************************************************************************************************//
@@ -318,6 +345,53 @@ public:
 			return false;
 		}
 
+
+
+
+		//creamos los buffers para el shader para poder pasarle las matrices
+		D3D11_BUFFER_DESC constDesc2;
+		ZeroMemory(&constDesc2, sizeof(constDesc2));
+		constDesc2.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+		constDesc2.ByteWidth = sizeof(LuzAmbientalS);
+		constDesc2.Usage = D3D11_USAGE_DEFAULT;
+
+		d3dResult = d3dDevice->CreateBuffer(&constDesc2, 0, &LuzAmbiental);
+
+		if (FAILED(d3dResult))
+		{
+			return false;
+		}
+		//creamos los buffers para el shader para poder pasarle las matrices
+		D3D11_BUFFER_DESC constDesc3;
+		ZeroMemory(&constDesc3, sizeof(constDesc3));
+		constDesc3.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+		constDesc3.ByteWidth = sizeof(LuxDifusaS);
+		constDesc3.Usage = D3D11_USAGE_DEFAULT;
+
+		d3dResult = d3dDevice->CreateBuffer(&constDesc3, 0, &LuzDifusa);
+
+		if (FAILED(d3dResult))
+		{
+			return false;
+		}
+		//creamos los buffers para el shader para poder pasarle las matrices
+		D3D11_BUFFER_DESC constDesc4;
+		ZeroMemory(&constDesc4, sizeof(constDesc4));
+		constDesc4.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+		constDesc4.ByteWidth = sizeof(DirLuzS);
+		constDesc4.Usage = D3D11_USAGE_DEFAULT;
+
+		d3dResult = d3dDevice->CreateBuffer(&constDesc4, 0, &DirLuz);
+
+		if (FAILED(d3dResult))
+		{
+			return false;
+		}
+
+
+
+
+
 		//posicion de la camara
 		D3DXVECTOR3 eye = D3DXVECTOR3(0.0f, 100.0f, 200.0f);
 		//a donde ve
@@ -339,10 +413,15 @@ public:
 	{
 		if(colorMapSampler)
 			colorMapSampler->Release();
-		if(colorMap)
-			colorMap->Release();
+
 		//***************************************************************************************************************************************//
 		//***************************************************************************************************************************************//
+		if (TexTerr1NM)
+			TexTerr1NM->Release();
+		if (TexTerr2NM)
+			TexTerr2NM->Release();
+		if (TexTerr3NM)
+			TexTerr3NM->Release();
 		if (TexTerr1)
 			TexTerr1->Release();
 		if (TexTerr2)
@@ -379,7 +458,10 @@ public:
 		alturaData = 0;
 
 		colorMapSampler = 0;
-		colorMap = 0;
+		TexTerr1NM = 0;
+		TexTerr2NM = 0;
+		TexTerr3NM = 0;
+
 		VertexShaderVS = 0;
 		solidColorPS = 0;
 		inputLayout = 0;
@@ -425,8 +507,8 @@ public:
 		d3dContext->VSSetShader( VertexShaderVS, 0, 0 );
 		d3dContext->PSSetShader( solidColorPS, 0, 0 );
 		//pasa lo sbuffers al shader
-		d3dContext->PSSetShaderResources( 0, 1, &colorMap );
-		d3dContext->PSSetShaderResources( 1, 1, &colorMap2 );
+		d3dContext->PSSetShaderResources( 0, 1, &TexTerr1NM);
+		d3dContext->PSSetShaderResources( 1, 1, &TexTerr2NM);
 		d3dContext->PSSetShaderResources( 2, 1, &blendMap );
 		d3dContext->PSSetSamplers( 0, 1, &colorMapSampler );
 
@@ -435,6 +517,40 @@ public:
 		d3dContext->PSSetShaderResources(3, 1, &TexTerr1);
 		d3dContext->PSSetShaderResources(4, 1, &TexTerr2);
 		d3dContext->PSSetShaderResources(5, 1, &TexTerr3);
+		d3dContext->PSSetShaderResources(6, 1, &TexTerr3NM);
+
+
+
+
+
+
+		SLA.ColorLuzAmbiental.x = 0.5;
+		SLA.ColorLuzAmbiental.y = 0.5;
+		SLA.ColorLuzAmbiental.z = 0.5;
+		SLA.FA = 0.5;
+		d3dContext->UpdateSubresource(LuzAmbiental, 0, 0, &SLA, 0, 0);
+
+
+		SLD.Color.x = 1.0;
+		SLD.Color.y = 1.0;
+		SLD.Color.z = 1.0;
+		SLD.FAD = 1.0;
+		d3dContext->UpdateSubresource(LuzDifusa, 0, 0, &SLD, 0, 0);
+
+
+		SDL.Dir.x = 5.0;
+		SDL.Dir.y = 10.0;
+		SDL.Dir.z = 2.0;
+		d3dContext->UpdateSubresource(DirLuz, 0, 0, &SDL, 0, 0);
+
+		d3dContext->VSSetConstantBuffers(3, 1, &LuzAmbiental);
+		//d3dContext->PSSetConstantBuffers(3, 1, &LuzAmbiental);
+		d3dContext->PSSetConstantBuffers(4, 1, &LuzDifusa);
+		d3dContext->VSSetConstantBuffers(5, 1, &DirLuz);
+
+
+
+
 		//***************************************************************************************************************************************//
 		//***************************************************************************************************************************************//
 

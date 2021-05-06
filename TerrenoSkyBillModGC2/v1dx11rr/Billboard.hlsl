@@ -23,6 +23,7 @@ cbuffer LuzAmb : register(b3)
 	float3 LuzAmbiental;
 	float FAA;
 };
+
 cbuffer LuzDif : register(b4)
 {
 	float3 LuzDifusa;
