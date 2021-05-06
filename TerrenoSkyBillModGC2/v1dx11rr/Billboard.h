@@ -13,11 +13,30 @@ public:
 	{
 		D3DXVECTOR3 pos;
 		D3DXVECTOR2 UV;
+		D3DXVECTOR2 padding;
+		D3DXVECTOR3 normal;
+		D3DXVECTOR3 tangente;
+		D3DXVECTOR3 binormal;
 	};
 
 	struct VertexCollide
 	{
 		D3DXVECTOR3 pos;
+	};
+
+	struct LuzAmbientalS {
+		D3DXVECTOR3 ColorLuzAmbiental;
+		float FA;
+	};
+
+	struct LuxDifusaS {
+		D3DXVECTOR3 Color;
+		float FAD;
+	};
+
+	struct DirLuzS {
+		D3DXVECTOR3 Dir;
+		float Padding;
 	};
 
 	ID3D11VertexShader* VertexShaderVS;
@@ -28,6 +47,7 @@ public:
 	ID3D11Buffer* indexBuffer;
 
 	ID3D11ShaderResourceView* colorMap;
+	ID3D11ShaderResourceView* normalMap;
 	ID3D11SamplerState* colorMapSampler;
 
 	ID3D11Buffer* viewCB;
@@ -35,8 +55,8 @@ public:
 	ID3D11Buffer* worldCB;
 	D3DXMATRIX viewMatrix;
 	D3DXMATRIX projMatrix;
-
-	float posx, posz;
+	int ancho, alto;
+	//float posx, posz;
 	float escalx, escaly;
 
 	UINT* indices;
@@ -48,19 +68,29 @@ public:
 	ID3D11DeviceContext* d3dContext;
 	D3DXVECTOR3 frontal;
 
+	///////////////////////////////////////////////////////////
+	ID3D11Buffer* LuzAmbiental;
+	LuzAmbientalS SLA;
+
+	ID3D11Buffer* LuzDifusa;
+	LuxDifusaS SLD;
+
+	ID3D11Buffer* DirLuz;
+	DirLuzS SDL;
+
 public:
-	BillboardRR(WCHAR* billb, float xx, float zz, ID3D11Device* D3DDevice, ID3D11DeviceContext* D3DContext, float escala)
+	BillboardRR(WCHAR* billb, WCHAR* normal, ID3D11Device* D3DDevice, ID3D11DeviceContext* D3DContext, float escala)
 	{
 		//copiamos el device y el device context a la clase terreno
 		d3dContext = D3DContext;
 		d3dDevice = D3DDevice;
 		//este es el ancho y el alto del terreno en su escala
-		posx = xx;
-		posz = zz;
+	/*	posx = xx;
+		posz = zz;*/
 		float escal = escala;
 		frontal = D3DXVECTOR3(0, 0, 1);
 		//aqui cargamos las texturas de alturas y el cesped
-		CargaParametros(billb, escal);
+		CargaParametros(billb, normal, escal);
 	}
 
 	~BillboardRR()
@@ -78,8 +108,7 @@ public:
 		ID3DBlob* errorBuffer = 0;
 		HRESULT result;
 
-		result = D3DX11CompileFromFile(filePath, 0, 0, entry, shaderModel, shaderFlags,
-			0, 0, buffer, &errorBuffer, 0);
+		result = D3DX11CompileFromFile(filePath, 0, 0, entry, shaderModel, shaderFlags, 0, 0, buffer, &errorBuffer, 0);
 		if (FAILED(result))
 		{
 			if (errorBuffer != 0)
@@ -96,7 +125,7 @@ public:
 		return true;
 	}
 
-	bool CargaParametros(WCHAR* billb, float escala)
+	bool CargaParametros(WCHAR* billb, WCHAR* normal, float escala)
 	{
 		HRESULT d3dResult;
 
@@ -131,7 +160,11 @@ public:
 		D3D11_INPUT_ELEMENT_DESC billLayout[] =
 		{
 			{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-			{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 }
+			{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+			{ "TEXCOORD", 1, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0},
+			{ "TEXCOORD", 2, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0},
+			{ "TEXCOORD", 3, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0}
+
 		};
 
 		unsigned int elementos = ARRAYSIZE(billLayout);
@@ -219,6 +252,7 @@ public:
 		estableceIndices();
 		//crea los accesos de las texturas para los shaders 
 		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, billb, 0, 0, &colorMap, 0);
+		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, normal, 0, 0, &normalMap, 0);
 
 		if (FAILED(d3dResult))
 		{
@@ -270,6 +304,50 @@ public:
 		}
 
 
+
+
+		//creamos los buffers para el shader para poder pasarle las matrices
+		D3D11_BUFFER_DESC constDesc2;
+		ZeroMemory(&constDesc2, sizeof(constDesc2));
+		constDesc2.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+		constDesc2.ByteWidth = sizeof(LuzAmbientalS);
+		constDesc2.Usage = D3D11_USAGE_DEFAULT;
+
+		d3dResult = d3dDevice->CreateBuffer(&constDesc2, 0, &LuzAmbiental);
+
+		if (FAILED(d3dResult))
+		{
+			return false;
+		}
+		//creamos los buffers para el shader para poder pasarle las matrices
+		D3D11_BUFFER_DESC constDesc3;
+		ZeroMemory(&constDesc3, sizeof(constDesc3));
+		constDesc3.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+		constDesc3.ByteWidth = sizeof(LuxDifusaS);
+		constDesc3.Usage = D3D11_USAGE_DEFAULT;
+
+		d3dResult = d3dDevice->CreateBuffer(&constDesc3, 0, &LuzDifusa);
+
+		if (FAILED(d3dResult))
+		{
+			return false;
+		}
+		//creamos los buffers para el shader para poder pasarle las matrices
+		D3D11_BUFFER_DESC constDesc4;
+		ZeroMemory(&constDesc4, sizeof(constDesc4));
+		constDesc4.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+		constDesc4.ByteWidth = sizeof(DirLuzS);
+		constDesc4.Usage = D3D11_USAGE_DEFAULT;
+
+		d3dResult = d3dDevice->CreateBuffer(&constDesc4, 0, &DirLuz);
+
+		if (FAILED(d3dResult))
+		{
+			return false;
+		}
+
+
+
 		return true;
 	}
 
@@ -278,7 +356,9 @@ public:
 		if (colorMapSampler)
 			colorMapSampler->Release();
 		if (colorMap)
-			colorMap->Release();
+			colorMap->Release();		
+		if (normalMap)
+			normalMap->Release();
 		if (VertexShaderVS)
 			VertexShaderVS->Release();
 		if (solidColorPS)
@@ -294,7 +374,7 @@ public:
 		if (worldCB)
 			worldCB->Release();
 
-
+		normalMap = 0;
 		colorMapSampler = 0;
 		colorMap = 0;
 		VertexShaderVS = 0;
@@ -308,7 +388,7 @@ public:
 	}
 
 
-	void Draw(D3DXMATRIX vista, D3DXMATRIX proyeccion, D3DXVECTOR3 poscam, float posy)
+	void Draw(D3DXMATRIX vista, D3DXMATRIX proyeccion, D3DXVECTOR3 poscam, float posx, float posy, float posz)
 	{
 
 
@@ -329,8 +409,9 @@ public:
 		//Establece el vertex y pixel shader que utilizara
 		d3dContext->VSSetShader(VertexShaderVS, 0, 0);
 		d3dContext->PSSetShader(solidColorPS, 0, 0);
-		//pasa lo sbuffers al shader
+		//pasa lo sbuffers al shader 
 		d3dContext->PSSetShaderResources(0, 1, &colorMap);
+		d3dContext->PSSetShaderResources(1, 1, &normalMap);
 		d3dContext->PSSetSamplers(0, 1, &colorMapSampler);
 
 		//mueve la camara
@@ -359,6 +440,38 @@ public:
 		d3dContext->VSSetConstantBuffers(0, 1, &worldCB);
 		d3dContext->VSSetConstantBuffers(1, 1, &viewCB);
 		d3dContext->VSSetConstantBuffers(2, 1, &projCB);
+
+
+
+
+
+		SLA.ColorLuzAmbiental.x = 0.5;
+		SLA.ColorLuzAmbiental.y = 0.5;
+		SLA.ColorLuzAmbiental.z = 0.5;
+		SLA.FA = 0.5;
+		d3dContext->UpdateSubresource(LuzAmbiental, 0, 0, &SLA, 0, 0);
+
+
+		SLD.Color.x = 1.0;
+		SLD.Color.y = 1.0;
+		SLD.Color.z = 1.0;
+		SLD.FAD = 1.0;
+		d3dContext->UpdateSubresource(LuzDifusa, 0, 0, &SLD, 0, 0);
+
+
+		SDL.Dir.x = 5.0;
+		SDL.Dir.y = 10.0;
+		SDL.Dir.z = 2.0;
+		d3dContext->UpdateSubresource(DirLuz, 0, 0, &SDL, 0, 0);
+
+		d3dContext->VSSetConstantBuffers(3, 1, &LuzAmbiental);
+		//d3dContext->PSSetConstantBuffers(3, 1, &LuzAmbiental);
+		d3dContext->PSSetConstantBuffers(4, 1, &LuzDifusa);
+		d3dContext->VSSetConstantBuffers(5, 1, &DirLuz);
+
+
+
+
 		//cantidad de trabajos
 
 		d3dContext->DrawIndexed(6, 0, 0);

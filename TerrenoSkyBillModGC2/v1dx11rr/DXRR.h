@@ -73,11 +73,11 @@ public:
 		terreno = new TerrenoRR(400, 400, d3dDevice, d3dContext);
 		skydome = new SkyDome(32, 32, 100.0f, &d3dDevice, &d3dContext, L"SkyDome.png");
 		
-		billboard = new BillboardRR(L"Billboard/grass.png", 0, 0, d3dDevice, d3dContext, 1);
-		Arbusto1 = new BillboardRR(L"Billboard/Arbusto1_Base.png", 0, 0, d3dDevice, d3dContext, 2);
-		Arbusto2 = new BillboardRR(L"Billboard/Arbusto2_Base.png", 0, 0, d3dDevice, d3dContext, 3);
-		Arbusto3 = new BillboardRR(L"Billboard/Arbusto3_Base.png", 0, 0, d3dDevice, d3dContext, 6);
-		Moon = new BillboardRR(L"Billboard/Moon.png", 152.45, 160.67, d3dDevice, d3dContext, 10);
+		billboard = new BillboardRR(L"Billboard/grass.png", L"Billboard/grass_normal.png", d3dDevice, d3dContext, 1);
+		Arbusto1 = new BillboardRR(L"Billboard/Arbusto1_Base.png", L"Billboard/Arbusto1_Normal.png", d3dDevice, d3dContext, 2);
+		Arbusto2 = new BillboardRR(L"Billboard/Arbusto2_Base.png", L"Billboard/Arbusto2_Normal.png", d3dDevice, d3dContext, 3);
+		Arbusto3 = new BillboardRR(L"Billboard/Arbusto3_Base.png", L"Billboard/Arbusto3_Normal.png", d3dDevice, d3dContext, 6);
+		Moon = new BillboardRR(L"Billboard/Moon.png", L"Billboard/Moon_Normal.png", d3dDevice, d3dContext, 10);
 
 		avion = new ModeloEspecular(d3dDevice, d3dContext, "Modelos/A3/A3.obj", L"Modelos/A3/texture.jpg", L"Modelos/A3/texture_nm.jpg", L"Modelos/A3/texture_esp.jpg", 5.4, 3, 4.7, 47.191, 20, -132.762);
 		house01 = new ModeloEspecular(d3dDevice, d3dContext, "Modelos/A5/House01.obj", L"Modelos/A5/texture.jpg", L"Modelos/A5/texture_nm.jpg", L"Modelos/A5/texture_esp.jpg", 3, 1, 4.7, -91.152, 9.5, -67.900);
@@ -267,11 +267,11 @@ public:
 		TurnOnDepth();
 		terreno->Draw(camara->vista, camara->proyeccion);
 		//TurnOnAlphaBlending();
-		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam, 20);
-		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, 20);
-		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, 20);
-		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, 20);
-		Moon->Draw(camara->vista, camara->proyeccion, camara->posCam, 90);
+		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam, 0, 20, 0);
+		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, -161.120, 13.5, -3.22);
+		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, 0, 20, 0);
+		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, 0, 20, 0);
+		Moon->Draw(camara->vista, camara->proyeccion, camara->posCam, 152.45, 20, 160.67);
 		//TurnOffAlphaBlending();
 		avion->Draw(camara->vista, camara->proyeccion);
 		house01->Draw(camara->vista, camara->proyeccion);
