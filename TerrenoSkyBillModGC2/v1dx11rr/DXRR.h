@@ -74,7 +74,7 @@ public:
 		skydome = new SkyDome(32, 32, 100.0f, &d3dDevice, &d3dContext, L"SkyDome.png");
 		
 		billboard = new BillboardRR(L"Billboard/grass.png", L"Billboard/grass_normal.png", d3dDevice, d3dContext, 1);
-		Arbusto1 = new BillboardRR(L"Billboard/Arbusto1_Base.png", L"Billboard/Arbusto1_Normal.png", d3dDevice, d3dContext, 5);
+		Arbusto1 = new BillboardRR(L"Billboard/Farola1.png", L"Billboard/Farola1_MN.png", d3dDevice, d3dContext, 7);
 		Arbusto2 = new BillboardRR(L"Billboard/Arbusto2_Base.png", L"Billboard/Arbusto2_Normal.png", d3dDevice, d3dContext, 3);
 		Arbusto3 = new BillboardRR(L"Billboard/Arbusto3_Base.png", L"Billboard/Arbusto3_Normal.png", d3dDevice, d3dContext, 7);
 		Moon = new BillboardRR(L"Billboard/Moon.png", L"Billboard/Moon_Normal.png", d3dDevice, d3dContext, 10);
@@ -268,20 +268,34 @@ public:
 		terreno->Draw(camara->vista, camara->proyeccion);
 		//TurnOnAlphaBlending();
 #pragma region Bill
-		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam, 0, 20, 0);
 
-		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, -161.120, 13.5, -3.22);
-		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, -152.06, 12.6, -17.56);
-		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, -146.899, 12.5, -61.783);
-		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, -178.724, 21.5, -46.46);
-		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, -180.812, 21, -6.627);
-		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, -158.01, 13, 46.609);
-		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, -171.24, 17, -31.02);
-
-
-		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, 24.03, 13, 152.03);
-		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, -95.51, 12.5, -13.28);
 		Moon->Draw(camara->vista, camara->proyeccion, camara->posCam, 152.45, 20, 160.67);
+		
+		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, -83.67, 13.5, -128.66);
+		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, -37.03, 12, -107.117);
+		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, -124.77, 22, -157.48);
+		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, 9.5, 12, -86.434);
+		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, 71.095, 12, -85.362);
+
+		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, -94.687, 11, 1.748);
+		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, -120.73, 11, -45.806);
+		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, 15.104, 12, 110.103);
+		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, 35.908, 13, 146.632);
+		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, -108.363, 11, 75.124);
+
+		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, -124.094, 12.5, -12.094);
+		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, -179.328, 24, -66.757);
+		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, -104.398, 12, 115.003);
+		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, -129.379, 12.5, 71.725);
+		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, 21.549, 13, 136.258);
+
+		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam, 71.37, 12, -37.081);
+		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam, 41.615, 12, -47.883);
+		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam, 13.309, 12, -63.302);
+		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam, 80.544, 12, -86.881);
+		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam, 1.683, 12, -97.425);
+
+		
 		//TurnOffAlphaBlending();
 #pragma endregion
 		
