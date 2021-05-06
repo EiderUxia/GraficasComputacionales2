@@ -88,9 +88,9 @@ private:
 
 	///////////////////////////////////////////////////////////
  	float escala;
-	float rotacionX;
-	float rotacionY;
-	vector3 Posicion;
+	//float rotacionX;
+	//float rotacionY;
+	//vector3 Posicion;
 	ID3D11Buffer* LuzAmbiental;
 	LuzAmbientalS SLA;
 
@@ -102,18 +102,18 @@ private:
 
 
 public:
-	ModeloRR(ID3D11Device* D3DDevice, ID3D11DeviceContext* D3DContext, const char NomOBJ[], WCHAR* diffuseTex, WCHAR* normal, float esc, float rx, float ry, float x, float y, float z)
+	ModeloRR(ID3D11Device* D3DDevice, ID3D11DeviceContext* D3DContext, const char NomOBJ[], WCHAR* diffuseTex, WCHAR* normal, float esc)
 	{
 
 		//copiamos el device y el device context a la clase terreno
 		d3dContext = D3DContext;
 		d3dDevice = D3DDevice;	
 		escala = esc;
-		rotacionX = rx;
-		rotacionY = ry;
-		Posicion.x = x;
-		Posicion.y = y;
-		Posicion.z = z;
+		//rotacionX = rx;
+		//rotacionY = ry;
+		//Posicion.x = x;
+		//Posicion.y = y;
+		//Posicion.z = z;
 
 		//aqui cargamos las texturas de alturas y el cesped
 		CargaParametros(NomOBJ, diffuseTex, normal);
@@ -428,7 +428,7 @@ public:
 	{
 	}
 
-	void Draw(D3DXMATRIX vista, D3DXMATRIX proyeccion)
+	void Draw(D3DXMATRIX vista, D3DXMATRIX proyeccion, float rx, float ry, float x, float y, float z)
 	{
 		static float rotation = 0.0f;
 		rotation += 0.01;
@@ -457,12 +457,12 @@ public:
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		//mueve
 		D3DXMATRIX rotationMat;
-		D3DXMatrixRotationYawPitchRoll(&rotationMat, rotacionX, rotacionY, 0.0f);
+		D3DXMatrixRotationYawPitchRoll(&rotationMat, rx, ry, 0.0f);
 		D3DXMATRIX translationMat;
-		D3DXMatrixTranslation(&translationMat, Posicion.x, Posicion.y, Posicion.z);
-		D3DXMATRIX ry;
-		D3DXMatrixRotationY(&ry, 0.01);
-		viewMatrix *= ry;
+		D3DXMatrixTranslation(&translationMat, x, y, z);
+		D3DXMATRIX roty;
+		D3DXMatrixRotationY(&roty, 0.01);
+		viewMatrix *= roty;
 
 		//D3DXMATRIX worldMat = rotationMat;//= rotationMat * translationMat;
 		D3DXMATRIX worldMat;

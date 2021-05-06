@@ -73,19 +73,19 @@ public:
 		terreno = new TerrenoRR(400, 400, d3dDevice, d3dContext);
 		skydome = new SkyDome(32, 32, 100.0f, &d3dDevice, &d3dContext, L"SkyDome.png");
 		
-		billboard = new BillboardRR(L"Billboard/grass.png", -64.4, 100.34, d3dDevice, d3dContext, 1);
-		Arbusto1 = new BillboardRR(L"Billboard/Arbusto1_Base.png", -71.4, 65.03, d3dDevice, d3dContext, 2);
-		Arbusto2 = new BillboardRR(L"Billboard/Arbusto2_Base.png", -65.8, 87.6, d3dDevice, d3dContext, 3);
-		Arbusto3 = new BillboardRR(L"Billboard/Arbusto3_Base.png", -74.7, 94.5, d3dDevice, d3dContext, 6);
-		Moon = new BillboardRR(L"Billboard/Moon.png", 70.35, 117.65, d3dDevice, d3dContext, 10);
+		billboard = new BillboardRR(L"Billboard/grass.png", 0, 0, d3dDevice, d3dContext, 1);
+		Arbusto1 = new BillboardRR(L"Billboard/Arbusto1_Base.png", 0, 0, d3dDevice, d3dContext, 2);
+		Arbusto2 = new BillboardRR(L"Billboard/Arbusto2_Base.png", 0, 0, d3dDevice, d3dContext, 3);
+		Arbusto3 = new BillboardRR(L"Billboard/Arbusto3_Base.png", 0, 0, d3dDevice, d3dContext, 6);
+		Moon = new BillboardRR(L"Billboard/Moon.png", 152.45, 160.67, d3dDevice, d3dContext, 10);
 
 		avion = new ModeloEspecular(d3dDevice, d3dContext, "Modelos/A3/A3.obj", L"Modelos/A3/texture.jpg", L"Modelos/A3/texture_nm.jpg", L"Modelos/A3/texture_esp.jpg", 5.4, 3, 4.7, 47.191, 20, -132.762);
 		house01 = new ModeloEspecular(d3dDevice, d3dContext, "Modelos/A5/House01.obj", L"Modelos/A5/texture.jpg", L"Modelos/A5/texture_nm.jpg", L"Modelos/A5/texture_esp.jpg", 3, 1, 4.7, -91.152, 9.5, -67.900);
 		house02 = new ModeloEspecular(d3dDevice, d3dContext, "Modelos/A6/House02.obj", L"Modelos/A6/texture1.jpg", L"Modelos/A6/texture1_normal.jpg", L"Modelos/A6/texture1_esp.jpg", 3, 3, 0, -18.559, 12, 82.141);
 		house03 = new ModeloEspecular(d3dDevice, d3dContext, "Modelos/A7/House03.obj", L"Modelos/A7/texture 2.jpg", L"Modelos/A7/texture 2_normal.jpg", L"Modelos/A7/texture 2_especular.jpg", 3, 0, 0, -108.825, 13, 26.023);
-		horse = new ModeloRR(d3dDevice, d3dContext, "Modelos/A4/A4.obj", L"Modelos/A4/Horse.jpg", L"Modelos/A4/Horse_NM.jpg", 1, 5, 4.7, 68.319, 17, 27.563);
+		horse = new ModeloRR(d3dDevice, d3dContext, "Modelos/A4/A4.obj", L"Modelos/A4/Horse.jpg", L"Modelos/A4/Horse_NM.jpg", 1);
 		cottage = new ModeloEspecular(d3dDevice, d3dContext, "Modelos/A1/Co.obj", L"Modelos/A1/cottage_diffuse.jpg", L"Modelos/A1/cottage_normal.jpg", L"Modelos/A1/cottage_diffuse_esp.jpg", .25, 4.5, 4.71, 50.068, 11, 125);
-		cow = new ModeloRR(d3dDevice, d3dContext, "Modelos/A2/A2.obj", L"Modelos/A2/colorOpacityCow.jpg", L"Modelos/A2/colorOpacityCowNorm.jpg", 1, 5, 0, 60.067, 16, -37.710);
+		cow = new ModeloRR(d3dDevice, d3dContext, "Modelos/A2/A2.obj", L"Modelos/A2/colorOpacityCow.jpg", L"Modelos/A2/colorOpacityCowNorm.jpg", 1);
 		
 	}
 
@@ -267,27 +267,25 @@ public:
 		TurnOnDepth();
 		terreno->Draw(camara->vista, camara->proyeccion);
 		//TurnOnAlphaBlending();
-		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam,
-			terreno->Superficie(billboard->posx, billboard->posz));
-		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam,
-			(terreno->Superficie(Arbusto1->posx, Arbusto1->posz)-.5));
-		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam,
-			(terreno->Superficie(Arbusto2->posx, Arbusto2->posz)-1));
-		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam,
-			terreno->Superficie(Arbusto3->posx, Arbusto3->posz));
-		Moon->Draw(camara->vista, camara->proyeccion, camara->posCam,
-			terreno->Superficie(Moon->posx, Moon->posz));
-
-
+		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam, 20);
+		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, 20);
+		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, 20);
+		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, 20);
+		Moon->Draw(camara->vista, camara->proyeccion, camara->posCam, 90);
 		//TurnOffAlphaBlending();
 		avion->Draw(camara->vista, camara->proyeccion);
 		house01->Draw(camara->vista, camara->proyeccion);
 		house02->Draw(camara->vista, camara->proyeccion);
-		house03->Draw(camara->vista, camara->proyeccion);
-		horse->Draw(camara->vista, camara->proyeccion);		 
+		house03->Draw(camara->vista, camara->proyeccion);		
 		cottage->Draw(camara->vista, camara->proyeccion);
-		cow->Draw(camara->vista, camara->proyeccion);		
-		
+		horse->Draw(camara->vista, camara->proyeccion, 5, 4.7, 68.319, 17, 27.563);
+		horse->Draw(camara->vista, camara->proyeccion, 9, 4.7, 75.134, 17, 49.339);
+		horse->Draw(camara->vista, camara->proyeccion, 1, 4.7, 102.66, 17, 10.389);
+		cow->Draw(camara->vista, camara->proyeccion, 5, 0, 60.067, 16, -37.710);
+		cow->Draw(camara->vista, camara->proyeccion, 1, 0, 88.58, 16, -75.61);
+		cow->Draw(camara->vista, camara->proyeccion, 9, 0, 50.138, 16, -59.129);
+		cow->Draw(camara->vista, camara->proyeccion, 2, 0, 15.57, 16, -98.50);	
+		cow->Draw(camara->vista, camara->proyeccion, 6, 0, 7.41, 16, -54.52);
 		
 		
 				
