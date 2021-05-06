@@ -158,6 +158,7 @@
     <ClInclude Include="Camara.h" />
     <ClInclude Include="DXRR.h" />
     <ClInclude Include="GamePadRR.h" />
+    <ClInclude Include="ModeloEspecular.h" />
     <ClInclude Include="ModeloRR.h" />
     <ClInclude Include="Movimiento.h" />
     <ClInclude Include="SkyDome.h" />
@@ -172,6 +173,7 @@
   <ItemGroup>
     <FxCompile Include="Billboard.hlsl" />
     <FxCompile Include="Modelo.fx" />
+    <FxCompile Include="ModeloEspecular.fx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

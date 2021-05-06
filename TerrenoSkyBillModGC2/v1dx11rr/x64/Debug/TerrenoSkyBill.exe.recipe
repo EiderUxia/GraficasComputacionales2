@@ -12,6 +12,9 @@
     <ContentFile>
       <FullPath>C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\x64\Debug\Modelo.cso</FullPath>
     </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\x64\Debug\ModeloEspecular.cso</FullPath>
+    </ContentFile>
   </ContentFiles>
   <SatelliteDlls />
   <NonRecipeFileRefs />
