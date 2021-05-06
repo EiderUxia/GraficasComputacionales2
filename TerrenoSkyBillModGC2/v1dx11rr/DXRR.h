@@ -69,24 +69,24 @@ public:
 		izqder = 0;
 		arriaba = 0;
 		camara = new Camara(D3DXVECTOR3(27,80,67), D3DXVECTOR3(66,80,-19), D3DXVECTOR3(0,1,0), Ancho, Alto);
-		terreno = new TerrenoRR(300, 300, d3dDevice, d3dContext);
+		terreno = new TerrenoRR(400, 400, d3dDevice, d3dContext);
 		skydome = new SkyDome(32, 32, 100.0f, &d3dDevice, &d3dContext, L"SkyDome.png");
-		//billboard = new BillboardRR(L"Billboard/arbol.png", 0, 0, d3dDevice, d3dContext, 5);
+		
 		billboard = new BillboardRR(L"Billboard/grass.png", -64.4, 100.34, d3dDevice, d3dContext, 1);
 		Arbusto1 = new BillboardRR(L"Billboard/Arbusto1_Base.png", -71.4, 65.03, d3dDevice, d3dContext, 2);
 		Arbusto2 = new BillboardRR(L"Billboard/Arbusto2_Base.png", -65.8, 87.6, d3dDevice, d3dContext, 3);
 		Arbusto3 = new BillboardRR(L"Billboard/Arbusto3_Base.png", -74.7, 94.5, d3dDevice, d3dContext, 6);
 		Moon = new BillboardRR(L"Billboard/Moon.png", 70.35, 117.65, d3dDevice, d3dContext, 10);
 
-		//avion = new ModeloRR(d3dDevice, d3dContext, "Modelos/A3/A3.obj", L"Modelos/A3/texture.jpg", 5, 1, 4.7, 0, 20, 0);
+		avion = new ModeloRR(d3dDevice, d3dContext, "Modelos/A3/A3.obj", L"Modelos/A3/texture.jpg", L"Modelos/A3/texture_nm.jpg", 5.4, 3, 4.7, 47.191, 20, -132.762);
+		house01 = new ModeloRR(d3dDevice, d3dContext, "Modelos/A5/House01.obj", L"Modelos/A5/texture.jpg", L"Modelos/A5/texture_nm.jpg", 3, 1, 4.7, -91.152, 9.5, -67.900);
+		house02 = new ModeloRR(d3dDevice, d3dContext, "Modelos/A6/House02.obj", L"Modelos/A6/texture1.jpg", L"Modelos/A6/texture1.jpg", 3, 3, 0, -18.559, 12, 82.141);
+		house03 = new ModeloRR(d3dDevice, d3dContext, "Modelos/A7/House03.obj", L"Modelos/A5/texture.jpg", L"Modelos/A5/texture.jpg", 3, 0, 0, -108.825, 13, 26.023);
 		//horse = new ModeloRR(d3dDevice, d3dContext, "Modelos/A4/A4.obj", L"Modelos/A4/Horse.jpg", 1, 5, 4.7, 10, 20, 10);
 		
-		//modelazo = new ModeloRR(d3dDevice, d3dContext,"Modelos/P1/Bridge.obj", L"Modelos/P1/Bridge_BaseColor.jpg", L"Modelos/P1/Bridge_BaseColor.jpg", 0.5, 5, 0, 10, 10, 10);
-		cottage = new ModeloRR(d3dDevice, d3dContext, "Modelos/A1/Co.obj", L"Modelos/A1/color.jpg", L"Modelos/A1/cottage_normal.jpg", .25, 0, 4.71, 10, 10, 10);
+		//cottage = new ModeloRR(d3dDevice, d3dContext, "Modelos/A1/Co.obj", L"Modelos/A1/color.jpg", L"Modelos/A1/cottage_normal.jpg", .25, 0, 4.71, 10, 10, 10);
 		//cow = new ModeloRR(d3dDevice, d3dContext, "Modelos/A2/A2.obj", L"grass.jpg", 5, 5, 0, 10, 10, 10);		
-		//house01 = new ModeloRR(d3dDevice, d3dContext, "Modelos/A5/House01.obj", L"Modelos/A5/texture.jpg", 1, 5, 0, 10, 20, 10);
-		//house02 = new ModeloRR(d3dDevice, d3dContext, "Modelos/A6/House02.obj", L"Modelos/A6/texture1.jpg", 1, 5, 0, 10, 15, 10);
-		//house03 = new ModeloRR(d3dDevice, d3dContext, "Modelos/A7/House03.obj", L"Modelos/A5/texture.jpg", 1, 5, 0, 10, 15, 10);
+		
 	}
 
 	~DXRR()
@@ -277,17 +277,21 @@ public:
 			terreno->Superficie(Arbusto3->posx, Arbusto3->posz));
 		Moon->Draw(camara->vista, camara->proyeccion, camara->posCam,
 			terreno->Superficie(Moon->posx, Moon->posz));
+
+
 		//TurnOffAlphaBlending();
-		//avion->Draw(camara->vista, camara->proyeccion);
+		avion->Draw(camara->vista, camara->proyeccion);
+		house01->Draw(camara->vista, camara->proyeccion);
+		house02->Draw(camara->vista, camara->proyeccion);
+		house03->Draw(camara->vista, camara->proyeccion);
 		//horse->Draw(camara->vista, camara->proyeccion);
 
 		 
-		//modelazo->Draw(camara->vista, camara->proyeccion);
-		cottage->Draw(camara->vista, camara->proyeccion);
+		//cottage->Draw(camara->vista, camara->proyeccion);
 		//cow->Draw(camara->vista, camara->proyeccion);		
-		//house01->Draw(camara->vista, camara->proyeccion);
-		//house02->Draw(camara->vista, camara->proyeccion);
-		//house03->Draw(camara->vista, camara->proyeccion);
+		
+		
+		
 				
 		swapChain->Present( 1, 0 );
 	}

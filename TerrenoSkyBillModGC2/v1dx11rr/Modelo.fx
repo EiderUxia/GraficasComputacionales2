@@ -82,7 +82,6 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 	//APORTACION AMBIENTAL
 	///////////////////////////////////////////
 	float4 AportAmbiental = float4(pix.ApAmb, 0);
-	//float4 AportAmbiental = float4((LuzAmbiental * FAA),0);
 	float4 textColor = colorMap.Sample(colorSampler, pix.tex0);
 	
 	///////////////////////////////////////////
@@ -92,20 +91,12 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 	float3 bump = normalize(2.0 * textNorm - 1.0);
 	float3x3 TBN = { pix.tangente, pix.binormal, pix.normal };
 	float3 bumpTBN = mul(normalize(bump), TBN);
-
-	//float3 DirLuz = float3(5, 10, 2); //---------------
-	//float3 DirLuz = Direccion;
-	//DirLuz = normalize(DirLuz);//--------------------- 
-	//float3 DirLuz = pix.DireccionLuz;
-	
 	float FALL = dot(normalize(bumpTBN), pix.DireccionLuz);
 	float4 LuzDif = float4(LuzDifusa, 0);
-
 	float4 AportLuzDif = saturate(LuzDif * FALL * FAD);
 
 	textColor = textColor * (AportAmbiental + AportLuzDif);
-	//textColor = textColor * (AportAmbiental);
-	//textColor = textColor * (AportLuzDif);
+
 
 	return textColor;
 }
