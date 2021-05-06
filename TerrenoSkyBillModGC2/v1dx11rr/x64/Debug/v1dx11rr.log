@@ -83,7 +83,10 @@ C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v
 C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(82,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
 C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(83,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
 C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(84,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(273,56): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(85,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(86,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(87,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(272,56): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
 C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\Movimiento.h(27,27): warning C4305: '=': truncamiento de 'double' a 'float'
 C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\Movimiento.h(29,26): warning C4305: '=': truncamiento de 'double' a 'float'
 C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\Movimiento.h(36,27): warning C4305: '=': truncamiento de 'double' a 'float'

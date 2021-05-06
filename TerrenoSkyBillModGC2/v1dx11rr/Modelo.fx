@@ -78,6 +78,8 @@ PS_Input VS_Main(VS_Input vertex)
 
 float4 PS_Main(PS_Input pix) : SV_TARGET
 {
+
+
 	///////////////////////////////////////////
 	//APORTACION AMBIENTAL
 	///////////////////////////////////////////
