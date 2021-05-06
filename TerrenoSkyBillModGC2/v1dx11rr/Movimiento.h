@@ -24,18 +24,18 @@ void KeyPressed(DXRR* instance) {
 	instance->arriaba = 0.0;
 
 	if (GetAsyncKeyState(Key_A) & 0x8000)
-		instance->izqder = -0.01;
+		instance->izqder = -0.02;
 	if (GetAsyncKeyState(Key_D) & 0x8000)
-		instance->izqder = 0.01;
+		instance->izqder = 0.02;
 	if (GetAsyncKeyState(Key_W) & 0x8000)
 		instance->vel = 5;
 	if (GetAsyncKeyState(Key_S) & 0x8000)
 		instance->vel = -5;
 
 	if (GetAsyncKeyState(VK_UP) & 0x8000)
-		instance->arriaba = 0.01;
+		instance->arriaba = 0.02;
 	if (GetAsyncKeyState(VK_DOWN) & 0x8000)
-		instance->arriaba = -0.01;
+		instance->arriaba = -0.02;
 	if (GetAsyncKeyState(P_KEY) & 0x8000)
 		instance->Posicion();
 }

@@ -1,9 +1,117 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(519,5): warning MSB8028: El directorio intermedio (x64\Debug\) contiene archivos compartidos de otro proyecto (Terreno.vcxproj, TerrenoSky.vcxproj). Esto puede dar lugar a un comportamiento incorrecto de limpieza y recompilación.
-C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\Billboard.hlsl(69,29-61): warning X3206: 'mul': implicit truncation of vector type
-C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\Billboard.hlsl(69,2-62): warning X3206: implicit truncation of vector type
-C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\Billboard.hlsl(70,27-57): warning X3206: 'mul': implicit truncation of vector type
-C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\Billboard.hlsl(70,2-58): warning X3206: implicit truncation of vector type
-C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\Billboard.hlsl(89,9-46): warning X3206: implicit truncation of vector type
-  
-  compilation object save succeeded; see C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\x64\Debug\Billboard.cso
+  TerrenoSkyBill.cpp
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(12,1): warning C4005: 'DXGI_STATUS_OCCLUDED': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56388): message : vea la definición anterior de 'DXGI_STATUS_OCCLUDED'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(13,1): warning C4005: 'DXGI_STATUS_CLIPPED': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56397): message : vea la definición anterior de 'DXGI_STATUS_CLIPPED'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(14,1): warning C4005: 'DXGI_STATUS_NO_REDIRECTION': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56406): message : vea la definición anterior de 'DXGI_STATUS_NO_REDIRECTION'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(15,1): warning C4005: 'DXGI_STATUS_NO_DESKTOP_ACCESS': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56415): message : vea la definición anterior de 'DXGI_STATUS_NO_DESKTOP_ACCESS'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(16,1): warning C4005: 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56424): message : vea la definición anterior de 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(17,1): warning C4005: 'DXGI_STATUS_MODE_CHANGED': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56433): message : vea la definición anterior de 'DXGI_STATUS_MODE_CHANGED'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(18,1): warning C4005: 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56442): message : vea la definición anterior de 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(21,1): warning C4005: 'DXGI_ERROR_INVALID_CALL': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56457): message : vea la definición anterior de 'DXGI_ERROR_INVALID_CALL'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(22,1): warning C4005: 'DXGI_ERROR_NOT_FOUND': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56466): message : vea la definición anterior de 'DXGI_ERROR_NOT_FOUND'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(23,1): warning C4005: 'DXGI_ERROR_MORE_DATA': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56475): message : vea la definición anterior de 'DXGI_ERROR_MORE_DATA'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(24,1): warning C4005: 'DXGI_ERROR_UNSUPPORTED': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56484): message : vea la definición anterior de 'DXGI_ERROR_UNSUPPORTED'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(25,1): warning C4005: 'DXGI_ERROR_DEVICE_REMOVED': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56493): message : vea la definición anterior de 'DXGI_ERROR_DEVICE_REMOVED'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(26,1): warning C4005: 'DXGI_ERROR_DEVICE_HUNG': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56502): message : vea la definición anterior de 'DXGI_ERROR_DEVICE_HUNG'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(27,1): warning C4005: 'DXGI_ERROR_DEVICE_RESET': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56512): message : vea la definición anterior de 'DXGI_ERROR_DEVICE_RESET'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(28,1): warning C4005: 'DXGI_ERROR_WAS_STILL_DRAWING': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56521): message : vea la definición anterior de 'DXGI_ERROR_WAS_STILL_DRAWING'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(29,1): warning C4005: 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56531): message : vea la definición anterior de 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(30,1): warning C4005: 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56540): message : vea la definición anterior de 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(31,1): warning C4005: 'DXGI_ERROR_DRIVER_INTERNAL_ERROR': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56550): message : vea la definición anterior de 'DXGI_ERROR_DRIVER_INTERNAL_ERROR'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(32,1): warning C4005: 'DXGI_ERROR_NONEXCLUSIVE': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56559): message : vea la definición anterior de 'DXGI_ERROR_NONEXCLUSIVE'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(33,1): warning C4005: 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56568): message : vea la definición anterior de 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(34,1): warning C4005: 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56578): message : vea la definición anterior de 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dxgitype.h(35,1): warning C4005: 'DXGI_ERROR_REMOTE_OUTOFMEMORY': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56587): message : vea la definición anterior de 'DXGI_ERROR_REMOTE_OUTOFMEMORY'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\d3d11.h(917,1): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56865): message : vea la definición anterior de 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\d3d11.h(918,1): warning C4005: 'D3D11_ERROR_FILE_NOT_FOUND': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56874): message : vea la definición anterior de 'D3D11_ERROR_FILE_NOT_FOUND'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\d3d11.h(919,1): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56884): message : vea la definición anterior de 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\d3d11.h(920,1): warning C4005: 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56893): message : vea la definición anterior de 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\d3d10.h(608,1): warning C4005: 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56841): message : vea la definición anterior de 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\d3d10.h(609,1): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': redefinición de macro
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\winerror.h(56850): message : vea la definición anterior de 'D3D10_ERROR_FILE_NOT_FOUND'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\TerrenoRR.h(218,85): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\TerrenoRR.h(330,63): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\TerrenoRR.h(330,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\TerrenoRR.h(408,1): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\TerrenoRR.h(448,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\TerrenoRR.h(511,21): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\TerrenoRR.h(513,19): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\Camara.h(37,63): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\Camara.h(37,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\Billboard.h(415,14): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\Billboard.h(416,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\ModeloRR.h(380,64): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\ModeloRR.h(380,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\ModeloRR.h(434,1): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\ModeloRR.h(464,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\ModeloRR.h(595,1): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\ModeloRR.h(596,1): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\ModeloRR.h(668,1): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\ModeloEspecular.h(382,64): warning C4244: 'argumento': conversión de 'int' a 'FLOAT'; posible pérdida de datos
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\ModeloEspecular.h(382,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\ModeloEspecular.h(439,1): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\ModeloEspecular.h(470,1): warning C4305: 'argumento': truncamiento de 'double' a 'FLOAT'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\ModeloEspecular.h(601,1): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\ModeloEspecular.h(602,1): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\ModeloEspecular.h(674,1): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(82,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(83,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(84,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(85,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(87,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(273,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(274,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(275,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(276,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(277,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(278,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(279,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(282,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(283,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(284,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(294,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(295,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(296,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(297,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(298,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(299,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(300,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\DXRR.h(301,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\Movimiento.h(27,27): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\Movimiento.h(29,26): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\Movimiento.h(36,27): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\Movimiento.h(38,28): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\TerrenoSkyBill.cpp(77,15): warning C4244: 'return': conversión de 'WPARAM' a 'int'; posible pérdida de datos
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\TerrenoSkyBill.cpp(109,26): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\TerrenoSkyBill.cpp(115,27): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\TerrenoSkyBill.cpp(120,27): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\TerrenoSkyBill.cpp(126,28): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\v1dx11rr\TerrenoSkyBill.cpp(129,58): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
   v1dx11rr.vcxproj -> C:\Users\RGamer\Documents\GitHub\GraficasComputacionales2\TerrenoSkyBillModGC2\x64\Debug\TerrenoSkyBill.exe

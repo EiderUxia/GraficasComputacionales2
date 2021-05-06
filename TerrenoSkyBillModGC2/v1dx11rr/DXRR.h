@@ -74,9 +74,9 @@ public:
 		skydome = new SkyDome(32, 32, 100.0f, &d3dDevice, &d3dContext, L"SkyDome.png");
 		
 		billboard = new BillboardRR(L"Billboard/grass.png", L"Billboard/grass_normal.png", d3dDevice, d3dContext, 1);
-		Arbusto1 = new BillboardRR(L"Billboard/Arbusto1_Base.png", L"Billboard/Arbusto1_Normal.png", d3dDevice, d3dContext, 2);
+		Arbusto1 = new BillboardRR(L"Billboard/Arbusto1_Base.png", L"Billboard/Arbusto1_Normal.png", d3dDevice, d3dContext, 5);
 		Arbusto2 = new BillboardRR(L"Billboard/Arbusto2_Base.png", L"Billboard/Arbusto2_Normal.png", d3dDevice, d3dContext, 3);
-		Arbusto3 = new BillboardRR(L"Billboard/Arbusto3_Base.png", L"Billboard/Arbusto3_Normal.png", d3dDevice, d3dContext, 6);
+		Arbusto3 = new BillboardRR(L"Billboard/Arbusto3_Base.png", L"Billboard/Arbusto3_Normal.png", d3dDevice, d3dContext, 7);
 		Moon = new BillboardRR(L"Billboard/Moon.png", L"Billboard/Moon_Normal.png", d3dDevice, d3dContext, 10);
 
 		avion = new ModeloEspecular(d3dDevice, d3dContext, "Modelos/A3/A3.obj", L"Modelos/A3/texture.jpg", L"Modelos/A3/texture_nm.jpg", L"Modelos/A3/texture_esp.jpg", 5.4, 3, 4.7, 47.191, 20, -132.762);
@@ -267,12 +267,25 @@ public:
 		TurnOnDepth();
 		terreno->Draw(camara->vista, camara->proyeccion);
 		//TurnOnAlphaBlending();
+#pragma region Bill
 		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam, 0, 20, 0);
+
 		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, -161.120, 13.5, -3.22);
-		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, 0, 20, 0);
-		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, 0, 20, 0);
+		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, -152.06, 12.6, -17.56);
+		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, -146.899, 12.5, -61.783);
+		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, -178.724, 21.5, -46.46);
+		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, -180.812, 21, -6.627);
+		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, -158.01, 13, 46.609);
+		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, -171.24, 17, -31.02);
+
+
+		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, 24.03, 13, 152.03);
+		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, -95.51, 12.5, -13.28);
 		Moon->Draw(camara->vista, camara->proyeccion, camara->posCam, 152.45, 20, 160.67);
 		//TurnOffAlphaBlending();
+#pragma endregion
+		
+#pragma region Modelos
 		avion->Draw(camara->vista, camara->proyeccion);
 		house01->Draw(camara->vista, camara->proyeccion);
 		house02->Draw(camara->vista, camara->proyeccion);
@@ -286,7 +299,7 @@ public:
 		cow->Draw(camara->vista, camara->proyeccion, 9, 0, 50.138, 16, -59.129);
 		cow->Draw(camara->vista, camara->proyeccion, 2, 0, 15.57, 16, -98.50);	
 		cow->Draw(camara->vista, camara->proyeccion, 6, 0, 7.41, 16, -54.52);
-		
+#pragma endregion
 		
 				
 		swapChain->Present( 1, 0 );

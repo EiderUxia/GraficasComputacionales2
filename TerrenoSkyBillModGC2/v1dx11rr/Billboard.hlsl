@@ -39,9 +39,7 @@ struct VS_Input
 {
 	float4 pos : POSITION;
 	float2 tex0 : TEXCOORD0;
-	float3 normal : TEXCOORD1;
-	float3 tangente : TEXCOORD2;
-	float3 binormal : TEXCOORD3;
+
 
 };
 
@@ -50,9 +48,6 @@ struct PS_Input
 	float4 pos : SV_POSITION;
 	float2 tex0 : TEXCOORD0;
 
-	float3 normal : TEXCOORD1;
-	float3 tangente : TEXCOORD2;
-	float3 binormal : TEXCOORD3;
 	float3 ApAmb : COLOR0;
 	float3 DireccionLuz : COLOR1;
 };
@@ -66,13 +61,8 @@ PS_Input VS_Main(VS_Input vertex)
 
 	vsOut.tex0 = vertex.tex0;
 
-	vsOut.tangente = normalize(mul(vertex.tangente, worldMatrix));
-	vsOut.normal = normalize(mul(vertex.normal, worldMatrix));
-	vsOut.tangente = normalize(vsOut.tangente - vsOut.normal * dot(vsOut.normal, vsOut.tangente));
-	vsOut.binormal = normalize(cross(vsOut.normal, vsOut.tangente));
 
 	vsOut.ApAmb = LuzAmbiental * FAA;
-	//vsOut.ApAmb = LuzDifusa * FAD;
 	vsOut.DireccionLuz = normalize(Direccion);
 
 
@@ -91,13 +81,7 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 	float4 LuzDif = float4(LuzDifusa, 0);
 	float4 AportLuzDif = saturate(LuzDif * FALL * FAD);
 
-	/*
-	
-	float3x3 TBN = { pix.tangente, pix.binormal, pix.normal };
-	float3 bumpTBN = mul(normalize(bump), TBN);
-	
-	
-	*/
+
 
 	if (text.a < 0.1)
 	{
