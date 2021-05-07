@@ -61,6 +61,8 @@ public:
 	D3DXVECTOR3 DireccionLuz;
 	D3DXVECTOR3 ColorLuz;
 	float FA;
+	float FE;
+	float luna;
 	
     DXRR(HWND hWnd, int Ancho, int Alto)
 	{
@@ -86,7 +88,9 @@ public:
 		ColorLuz[1] = 1;
 		ColorLuz[2] = 1;
 
-		FA = 0;
+		FA = 0.1;
+		FE = 0.1;
+		
 
 
 		skydome = new SkyDome(32, 32, 100.0f, &d3dDevice, &d3dContext, L"Skydome/SkyDome1.5.jpg", L"Skydome/SkyDome2.5.jpg", L"Skydome/SkyDome3.jpg");
@@ -282,7 +286,9 @@ public:
 			ColorLuz[1] = ColorLuz[1] - 0.00001;
 			ColorLuz[2] = ColorLuz[2] - 0.0001;
 
-			FA = FA + 0.0005;
+			FA = FA + 0.0002;
+			FE = 0.05;
+			luna = -40;
 		}
 		else if (tiempo > 1.0 && tiempo < 2.0) {
 			tiempo2 = 1;
@@ -294,16 +300,25 @@ public:
 			ColorLuz[1] = ColorLuz[1] + 0.00001;
 			ColorLuz[2] = ColorLuz[2] + 0.0001;
 
-			FA = FA - 0.0005;
+			FA = FA - 0.0002;
+			FE = 0.8;
+
+			luna = luna + 000000001;
+			if (luna > 80) {
+				luna = 80;
+			}
+
 		}
 		else if (tiempo > 2.0 && tiempo < 3.0) {
 			tiempo2 = 2;
 			
-			ColorLuz[0] = 0;
-			ColorLuz[1] = 0;
-			ColorLuz[2] = 0;
+			ColorLuz[0] = 1;
+			ColorLuz[1] = 1;
+			ColorLuz[2] = 1;
 
-			FA = 0.2;
+			FA = FA - 0.0002;
+			
+	
 		}
 		else if(tiempo > 3.0 && tiempo < 3.5){			
 			tiempo2 = 0;
@@ -315,6 +330,11 @@ public:
 			ColorLuz[0] = 1;
 			ColorLuz[1] = 1;
 			ColorLuz[2] = 1;
+
+			FA = 0.1;
+			FE = 0.1;
+
+			luna = luna - 0.0002;
 		}
 
 
@@ -335,7 +355,7 @@ public:
 		//TurnOnAlphaBlending();
 #pragma region Bill
 
-		Moon->Draw(camara->vista, camara->proyeccion, camara->posCam, 152.45, 20, 160.67, DireccionLuz, ColorLuz, FA);
+		Moon->Draw(camara->vista, camara->proyeccion, camara->posCam, 152.45, luna, 160.67, DireccionLuz, ColorLuz, FA);
 		
 		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, -83.67, 13.5, -128.66, DireccionLuz, ColorLuz, FA);
 		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, -37.03, 12, -107.117, DireccionLuz, ColorLuz, FA);
@@ -365,12 +385,13 @@ public:
 		//TurnOffAlphaBlending();
 #pragma endregion
 		
-#pragma region Modelos
-		avion->Draw(camara->vista, camara->proyeccion, DireccionLuz, ColorLuz, FA);
-		house01->Draw(camara->vista, camara->proyeccion, DireccionLuz, ColorLuz, FA);
-		house02->Draw(camara->vista, camara->proyeccion, DireccionLuz, ColorLuz, FA);
-		house03->Draw(camara->vista, camara->proyeccion, DireccionLuz, ColorLuz, FA);
-		cottage->Draw(camara->vista, camara->proyeccion, DireccionLuz, ColorLuz, FA);
+#pragma region Modelos 
+		
+		avion->Draw(camara->vista, camara->proyeccion, DireccionLuz, ColorLuz, FA, FE, camara->posCam);
+		house01->Draw(camara->vista, camara->proyeccion, DireccionLuz, ColorLuz, FA, FE, camara->posCam);
+		house02->Draw(camara->vista, camara->proyeccion, DireccionLuz, ColorLuz, FA, FE, camara->posCam);
+		house03->Draw(camara->vista, camara->proyeccion, DireccionLuz, ColorLuz, FA, FE, camara->posCam);
+		cottage->Draw(camara->vista, camara->proyeccion, DireccionLuz, ColorLuz, FA, FE, camara->posCam);
 		horse->Draw(camara->vista, camara->proyeccion, 5, 4.7, 68.319, 17, 27.563, DireccionLuz, ColorLuz, FA);
 		horse->Draw(camara->vista, camara->proyeccion, 9, 4.7, 75.134, 17, 49.339, DireccionLuz, ColorLuz, FA);
 		horse->Draw(camara->vista, camara->proyeccion, 1, 4.7, 102.66, 17, 10.389, DireccionLuz, ColorLuz, FA);

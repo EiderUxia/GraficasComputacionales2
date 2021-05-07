@@ -47,6 +47,11 @@ private:
 		float Padding;
 	};
 
+	struct PosicionCamara {
+		D3DXVECTOR3 Pos;
+		float Padding;
+	};
+
 	struct vector3 {
 		float x, y, z;
 	};
@@ -100,6 +105,11 @@ private:
 
 	ID3D11Buffer* DirLuz;
 	DirLuzS SDL;
+
+	ID3D11Buffer* PosCam;
+	PosicionCamara Cam;
+
+	
 
 
 public:
@@ -367,6 +377,20 @@ public:
 			return false;
 		}
 
+		//creamos los buffers para el shader para poder pasarle las matrices
+		D3D11_BUFFER_DESC constDesc5;
+		ZeroMemory(&constDesc5, sizeof(constDesc5));
+		constDesc5.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+		constDesc5.ByteWidth = sizeof(PosicionCamara);
+		constDesc5.Usage = D3D11_USAGE_DEFAULT;
+
+		d3dResult = d3dDevice->CreateBuffer(&constDesc5, 0, &PosCam);
+
+		if (FAILED(d3dResult))
+		{
+			return false;
+		}
+
 
 
 
@@ -433,7 +457,7 @@ public:
 	{
 	}
 
-	void Draw(D3DXMATRIX vista, D3DXMATRIX proyeccion, D3DXVECTOR3 Direccion, D3DXVECTOR3 ColorLuz, float FA)
+	void Draw(D3DXMATRIX vista, D3DXMATRIX proyeccion, D3DXVECTOR3 Direccion, D3DXVECTOR3 ColorLuz, float FA, float FE, D3DXVECTOR3 CamaraPosicion)
 	{
 		static float rotation = 0.0f;
 		rotation += 0.01;
@@ -503,12 +527,18 @@ public:
 		SDL.Dir.x = Direccion[0];
 		SDL.Dir.y = Direccion[1];
 		SDL.Dir.z = Direccion[2];
+		SDL.Padding = FE;
 		d3dContext->UpdateSubresource(DirLuz, 0, 0, &SDL, 0, 0);
 
+		Cam.Pos.x = CamaraPosicion[0];
+		Cam.Pos.y = CamaraPosicion[1];
+		Cam.Pos.z = CamaraPosicion[2];
+		d3dContext->UpdateSubresource(PosCam, 0, 0, &Cam, 0, 0);
+
 		d3dContext->VSSetConstantBuffers(3, 1, &LuzAmbiental);
-		//d3dContext->PSSetConstantBuffers(3, 1, &LuzAmbiental);
 		d3dContext->PSSetConstantBuffers(4, 1, &LuzDifusa);
 		d3dContext->VSSetConstantBuffers(5, 1, &DirLuz);
+		d3dContext->PSSetConstantBuffers(6, 1, &PosCam);
 		//cantidad de trabajos
 
 		d3dContext->DrawIndexed(cantind, 0, 0);

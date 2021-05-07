@@ -36,6 +36,12 @@ cbuffer DirLuz : register(b5)
 	float padding;
 };
 
+cbuffer Camara : register(b6)
+{
+	float3 Posicion;
+	float naruto;
+};
+
 
 struct VS_Input
 {
@@ -102,9 +108,9 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 	//APORTACION ESPECULAR
 	///////////////////////////////////////////
 	float4 textEspec = especularMap.Sample(colorSampler, pix.tex0);
-	float4 LuzEspecular = { 1.0f, 0.9f, 1.0f, 1.0f };
-	float3 camara = normalize(float3(-3, -5, 10));
-	float FAS = 5;
+	float4 LuzEspecular = float4(LuzDifusa, 0); 
+	float3 camara = normalize(Posicion);
+	float FAS = padding;
 	float3 Reflejo = normalize(2 * FALL * bumpTBN - pix.DireccionLuz);
 	float4 AportEspecular = pow(saturate(dot(Reflejo, camara)), 30) * FAS * textEspec * LuzEspecular;
 
