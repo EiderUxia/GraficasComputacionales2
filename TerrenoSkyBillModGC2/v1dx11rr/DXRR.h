@@ -71,8 +71,10 @@ public:
 		arriaba = 0;
 		camara = new Camara(D3DXVECTOR3(27,80,67), D3DXVECTOR3(66,80,-19), D3DXVECTOR3(0,1,0), Ancho, Alto);
 		terreno = new TerrenoRR(400, 400, d3dDevice, d3dContext);
-		skydome = new SkyDome(32, 32, 100.0f, &d3dDevice, &d3dContext, L"SkyDome.png");
-		
+		//skydome = new SkyDome(32, 32, 100.0f, &d3dDevice, &d3dContext, L"SkyDome.png");
+		skydome = new SkyDome(32, 32, 100.0f, &d3dDevice, &d3dContext, L"Skydome/SkyDome3.jpg");
+
+
 		billboard = new BillboardRR(L"Billboard/grass.png", L"Billboard/grass_normal.png", d3dDevice, d3dContext, 1);
 		Arbusto1 = new BillboardRR(L"Billboard/Farola1.png", L"Billboard/Farola1_MN.png", d3dDevice, d3dContext, 7);
 		Arbusto2 = new BillboardRR(L"Billboard/Arbusto2_Base.png", L"Billboard/Arbusto2_Normal.png", d3dDevice, d3dContext, 3);

@@ -34,6 +34,8 @@ private:
 	ID3D11Buffer* indexBuffer;
 
 	ID3D11ShaderResourceView* textura;
+	ID3D11ShaderResourceView* textura2;
+	ID3D11ShaderResourceView* textura3;
 	ID3D11SamplerState* texSampler;
 
 	ID3D11Buffer* matrixBufferCB;
@@ -198,6 +200,8 @@ public:
 		creaIndices();
 
 		d3dResult = D3DX11CreateShaderResourceViewFromFile((*d3dDevice), diffuseTex, 0, 0, &textura, 0);
+		d3dResult = D3DX11CreateShaderResourceViewFromFile((*d3dDevice), diffuseTex, 0, 0, &textura2, 0);
+		d3dResult = D3DX11CreateShaderResourceViewFromFile((*d3dDevice), diffuseTex, 0, 0, &textura3, 0);
 
 		if (FAILED(d3dResult))
 		{
@@ -245,6 +249,10 @@ public:
 			texSampler->Release();
 		if (textura)
 			textura->Release();
+		if (textura2)
+			textura2->Release();
+		if (textura3)
+			textura3->Release();
 		if (solidColorVS)
 			solidColorVS->Release();
 		if (solidColorPS)
@@ -292,6 +300,8 @@ public:
 		(*d3dContext)->VSSetShader(solidColorVS, 0, 0);
 		(*d3dContext)->PSSetShader(solidColorPS, 0, 0);
 		(*d3dContext)->PSSetShaderResources(0, 1, &textura);
+		(*d3dContext)->PSSetShaderResources(1, 1, &textura2);
+		(*d3dContext)->PSSetShaderResources(2, 1, &textura3);
 		(*d3dContext)->PSSetSamplers(0, 1, &texSampler);
 
 		D3DXMATRIX worldMat;

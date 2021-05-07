@@ -1,4 +1,6 @@
-Texture2D textures;
+Texture2D textures: register(t0);
+Texture2D textures2: register(t1);
+Texture2D textures3: register(t2);
 SamplerState colorSampler : register(s0);
 
 cbuffer MatrixBuffer
