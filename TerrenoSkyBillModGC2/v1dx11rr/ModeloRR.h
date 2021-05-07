@@ -47,6 +47,12 @@ private:
 		float Padding;
 	};
 
+	struct AduaMov {
+		D3DXVECTOR2 Mov;
+		int op;
+		float padding;
+	};
+
 	struct vector3 {
 		float x, y, z;
 	};
@@ -100,6 +106,8 @@ private:
 	ID3D11Buffer* DirLuz;
 	DirLuzS SDL;
 
+	ID3D11Buffer* Movimiento;
+	AduaMov Agua;
 
 public:
 	ModeloRR(ID3D11Device* D3DDevice, ID3D11DeviceContext* D3DContext, const char NomOBJ[], WCHAR* diffuseTex, WCHAR* normal, float esc)
@@ -109,11 +117,6 @@ public:
 		d3dContext = D3DContext;
 		d3dDevice = D3DDevice;	
 		escala = esc;
-		//rotacionX = rx;
-		//rotacionY = ry;
-		//Posicion.x = x;
-		//Posicion.y = y;
-		//Posicion.z = z;
 
 		//aqui cargamos las texturas de alturas y el cesped
 		CargaParametros(NomOBJ, diffuseTex, normal);
@@ -365,6 +368,20 @@ public:
 			return false;
 		}
 
+		//creamos los buffers para el shader para poder pasarle las matrices
+		D3D11_BUFFER_DESC constDesc5;
+		ZeroMemory(&constDesc5, sizeof(constDesc5));
+		constDesc5.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+		constDesc5.ByteWidth = sizeof(AduaMov);
+		constDesc5.Usage = D3D11_USAGE_DEFAULT;
+
+		d3dResult = d3dDevice->CreateBuffer(&constDesc5, 0, &Movimiento);
+
+		if (FAILED(d3dResult))
+		{
+			return false;
+		}
+
 
 
 
@@ -428,7 +445,7 @@ public:
 	{
 	}
 
-	void Draw(D3DXMATRIX vista, D3DXMATRIX proyeccion, float rx, float ry, float x, float y, float z, D3DXVECTOR3 Direccion, D3DXVECTOR3 ColorLuz, float FA)
+	void Draw(D3DXMATRIX vista, D3DXMATRIX proyeccion, float rx, float ry, float x, float y, float z, D3DXVECTOR3 Direccion, D3DXVECTOR3 ColorLuz, float FA, int op, float mov)
 	{
 		static float rotation = 0.0f;
 		rotation += 0.01;
@@ -489,7 +506,14 @@ public:
 		SLD.Color.x = ColorLuz[0];
 		SLD.Color.y = ColorLuz[1];
 		SLD.Color.z = ColorLuz[2];
-		SLD.FAD = FA;
+		if (op == 1) {
+			SLD.FAD = FA + 0.2;
+		}
+		else
+		{
+			SLD.FAD = FA;
+
+		}
 		d3dContext->UpdateSubresource(LuzDifusa, 0, 0, &SLD, 0, 0);
 
 
@@ -498,10 +522,15 @@ public:
 		SDL.Dir.z = Direccion[2];
 		d3dContext->UpdateSubresource(DirLuz, 0, 0, &SDL, 0, 0);
 
+		Agua.Mov[0] = mov;
+		Agua.Mov[1] = 0;
+		Agua.op = op;
+		d3dContext->UpdateSubresource(Movimiento, 0, 0, &Agua, 0, 0);
+
 		d3dContext->VSSetConstantBuffers(3, 1, &LuzAmbiental);
-		//d3dContext->PSSetConstantBuffers(3, 1, &LuzAmbiental);
 		d3dContext->PSSetConstantBuffers(4, 1, &LuzDifusa);
 		d3dContext->VSSetConstantBuffers(5, 1, &DirLuz);
+		d3dContext->PSSetConstantBuffers(6, 1, &Movimiento);
 		//cantidad de trabajos
 		
 		d3dContext->DrawIndexed(cantind, 0, 0);

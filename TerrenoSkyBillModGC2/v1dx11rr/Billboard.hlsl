@@ -36,6 +36,13 @@ cbuffer DirLuz : register(b5)
 	float padding;
 };
 
+cbuffer Agua : register(b6)
+{
+	int op;
+	float FA;
+	float2 naruto;
+};
+
 struct VS_Input
 {
 	float4 pos : POSITION;
@@ -80,7 +87,13 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 	float3 bump = normalize(2.0 * textNorm - 1.0);
 	float FALL = dot(normalize(bump), pix.DireccionLuz);
 	float4 LuzDif = float4(LuzDifusa, 0);
-	float4 AportLuzDif = saturate(LuzDif * FALL * FAD);
+	float atenuacion = FAD;
+	if (op == 1) {
+		atenuacion = FA;
+		LuzDif = float4(1,1,1,1);
+		AportAmbiental = ( 0.2, 0.2, 0.2, 1 );
+	}
+	float4 AportLuzDif = saturate(LuzDif * FALL * atenuacion);
 
 
 

@@ -37,6 +37,12 @@ public:
 		float Padding;
 	};
 
+	struct Luna {
+		int op;
+		float FA;
+		D3DXVECTOR2 Padding;
+	};
+
 	ID3D11VertexShader* VertexShaderVS;
 	ID3D11PixelShader* solidColorPS;
 
@@ -75,6 +81,9 @@ public:
 
 	ID3D11Buffer* DirLuz;
 	DirLuzS SDL;
+
+	ID3D11Buffer* EsLuna;
+	Luna luna;
 
 public:
 	BillboardRR(WCHAR* billb, WCHAR* normal, ID3D11Device* D3DDevice, ID3D11DeviceContext* D3DContext, float escala)
@@ -340,7 +349,19 @@ public:
 		{
 			return false;
 		}
+		//creamos los buffers para el shader para poder pasarle las matrices
+		D3D11_BUFFER_DESC constDesc5;
+		ZeroMemory(&constDesc5, sizeof(constDesc5));
+		constDesc5.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+		constDesc5.ByteWidth = sizeof(Luna);
+		constDesc5.Usage = D3D11_USAGE_DEFAULT;
 
+		d3dResult = d3dDevice->CreateBuffer(&constDesc5, 0, &EsLuna);
+
+		if (FAILED(d3dResult))
+		{
+			return false;
+		}
 
 
 		return true;
@@ -383,7 +404,7 @@ public:
 	}
 
 
-	void Draw(D3DXMATRIX vista, D3DXMATRIX proyeccion, D3DXVECTOR3 poscam, float posx, float posy, float posz, D3DXVECTOR3 Direccion, D3DXVECTOR3 ColorLuz, float FA)
+	void Draw(D3DXMATRIX vista, D3DXMATRIX proyeccion, D3DXVECTOR3 poscam, float posx, float posy, float posz, D3DXVECTOR3 Direccion, D3DXVECTOR3 ColorLuz, float FA, int es, float tiem)
 	{
 
 
@@ -459,10 +480,22 @@ public:
 		SDL.Dir.z = Direccion[2];
 		d3dContext->UpdateSubresource(DirLuz, 0, 0, &SDL, 0, 0);
 
+		
+		luna.op = es;
+		if (tiem > 2 && tiem < 3) {
+			luna.FA = 0.5;
+		}
+		else if (tiem > 3) {
+			luna.FA = 1.0;
+
+
+		}
+		d3dContext->UpdateSubresource(EsLuna, 0, 0, &luna, 0, 0);
+
 		d3dContext->VSSetConstantBuffers(3, 1, &LuzAmbiental);
-		//d3dContext->PSSetConstantBuffers(3, 1, &LuzAmbiental);
 		d3dContext->PSSetConstantBuffers(4, 1, &LuzDifusa);
 		d3dContext->VSSetConstantBuffers(5, 1, &DirLuz);
+		d3dContext->PSSetConstantBuffers(6, 1, &EsLuna);
 
 
 

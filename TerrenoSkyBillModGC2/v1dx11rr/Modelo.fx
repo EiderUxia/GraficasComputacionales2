@@ -35,6 +35,13 @@ cbuffer DirLuz : register(b5)
 	float padding;
 };
 
+cbuffer Agua : register(b6)
+{
+	float2 Movimiento;
+	int op;
+	float naruto;
+};
+
 
 struct VS_Input
 {
@@ -89,7 +96,14 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 	///////////////////////////////////////////
 	//APORTACION DIFUSA
 	///////////////////////////////////////////
-	float4 textNorm = normalMap.Sample(colorSampler, pix.tex0);
+	float4 textNorm;
+	if (op == 0) {
+		textNorm = normalMap.Sample(colorSampler, pix.tex0);		
+	}
+	if(op == 1) {
+		textNorm = normalMap.Sample(colorSampler, pix.tex0 + Movimiento);
+	}
+
 	float3 bump = normalize(2.0 * textNorm - 1.0);
 	float3x3 TBN = { pix.tangente, pix.binormal, pix.normal };
 	float3 bumpTBN = mul(normalize(bump), TBN);

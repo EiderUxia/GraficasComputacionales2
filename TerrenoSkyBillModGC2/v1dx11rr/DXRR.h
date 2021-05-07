@@ -284,9 +284,9 @@ public:
 
 			ColorLuz[0] = ColorLuz[0] - 0.00001;
 			ColorLuz[1] = ColorLuz[1] - 0.00001;
-			ColorLuz[2] = ColorLuz[2] - 0.0001;
+			ColorLuz[2] = ColorLuz[2] - 0.00005;
 
-			FA = FA + 0.0002;
+			FA = FA + 0.00015;
 			FE = 0.05;
 			luna = -40;
 		}
@@ -298,14 +298,15 @@ public:
 
 			ColorLuz[0] = ColorLuz[0] + 0.00001;
 			ColorLuz[1] = ColorLuz[1] + 0.00001;
-			ColorLuz[2] = ColorLuz[2] + 0.0001;
+			ColorLuz[2] = ColorLuz[2] + 0.00005;
 
-			FA = FA - 0.0002;
+			FA = FA - 0.00015;
 			FE = 0.8;
-
-			luna = luna + 000000001;
-			if (luna > 80) {
-				luna = 80;
+			if (tiempo > 1.7) {
+				luna = luna + 000000001;
+				if (luna > 80) {
+					luna = 80;
+				}
 			}
 
 		}
@@ -318,6 +319,10 @@ public:
 
 			FA = FA - 0.0002;
 			
+			if (tiempo > 2.8) {
+				luna = luna - 000000001;
+			}
+
 	
 		}
 		else if(tiempo > 3.0 && tiempo < 3.5){			
@@ -336,7 +341,10 @@ public:
 
 			luna = luna - 0.0002;
 		}
-
+		static float aguamov = 0;
+		aguamov += 0.0002;
+		if (aguamov >= 1)
+			aguamov = 0.0;
 
 		if( d3dContext == 0 )
 			return;
@@ -355,31 +363,31 @@ public:
 		//TurnOnAlphaBlending();
 #pragma region Bill
 
-		Moon->Draw(camara->vista, camara->proyeccion, camara->posCam, 152.45, luna, 160.67, DireccionLuz, ColorLuz, FA);
+		Moon->Draw(camara->vista, camara->proyeccion, camara->posCam, 152.45, luna, 160.67, DireccionLuz, ColorLuz, FA, 1, tiempo);
 		
-		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, -83.67, 13.5, -128.66, DireccionLuz, ColorLuz, FA);
-		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, -37.03, 12, -107.117, DireccionLuz, ColorLuz, FA);
-		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, -124.77, 22, -157.48, DireccionLuz, ColorLuz, FA);
-		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, 9.5, 12, -86.434, DireccionLuz, ColorLuz, FA);
-		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, 71.095, 12, -85.362, DireccionLuz, ColorLuz, FA);
+		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, -83.67, 13.5, -128.66, DireccionLuz, ColorLuz, FA, 0, tiempo);
+		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, -37.03, 12, -107.117, DireccionLuz, ColorLuz, FA, 0, tiempo);
+		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, -124.77, 22, -157.48, DireccionLuz, ColorLuz, FA, 0, tiempo);
+		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, 9.5, 12, -86.434, DireccionLuz, ColorLuz, FA, 0, tiempo);
+		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, 71.095, 12, -85.362, DireccionLuz, ColorLuz, FA, 0, tiempo);
 
-		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, -94.687, 11, 1.748, DireccionLuz, ColorLuz, FA);
-		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, -120.73, 11, -45.806, DireccionLuz, ColorLuz, FA);
-		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, 15.104, 12, 110.103, DireccionLuz, ColorLuz, FA);
-		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, 35.908, 13, 146.632, DireccionLuz, ColorLuz, FA);
-		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, -108.363, 11, 75.124, DireccionLuz, ColorLuz, FA);
+		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, -94.687, 11, 1.748, DireccionLuz, ColorLuz, FA, 0, tiempo);
+		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, -120.73, 11, -45.806, DireccionLuz, ColorLuz, FA, 0, tiempo);
+		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, 15.104, 12, 110.103, DireccionLuz, ColorLuz, FA, 0, tiempo);
+		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, 35.908, 13, 146.632, DireccionLuz, ColorLuz, FA, 0, tiempo);
+		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, -108.363, 11, 75.124, DireccionLuz, ColorLuz, FA, 0, tiempo);
 
-		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, -124.094, 12.5, -12.094, DireccionLuz, ColorLuz, FA);
-		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, -179.328, 24, -66.757, DireccionLuz, ColorLuz, FA);
-		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, -104.398, 12, 115.003, DireccionLuz, ColorLuz, FA);
-		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, -129.379, 12.5, 71.725, DireccionLuz, ColorLuz, FA);
-		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, 21.549, 13, 136.258, DireccionLuz, ColorLuz, FA);
+		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, -124.094, 12.5, -12.094, DireccionLuz, ColorLuz, FA, 0, tiempo);
+		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, -179.328, 24, -66.757, DireccionLuz, ColorLuz, FA, 0, tiempo);
+		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, -104.398, 12, 115.003, DireccionLuz, ColorLuz, FA, 0, tiempo);
+		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, -129.379, 12.5, 71.725, DireccionLuz, ColorLuz, FA, 0, tiempo);
+		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, 21.549, 13, 136.258, DireccionLuz, ColorLuz, FA, 0, tiempo);
 
-		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam, 71.37, 12, -37.081, DireccionLuz, ColorLuz, FA);
-		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam, 41.615, 12, -47.883, DireccionLuz, ColorLuz, FA);
-		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam, 13.309, 12, -63.302, DireccionLuz, ColorLuz, FA);
-		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam, 80.544, 12, -86.881, DireccionLuz, ColorLuz, FA);
-		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam, 1.683, 12, -97.425, DireccionLuz, ColorLuz, FA);
+		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam, 71.37, 12, -37.081, DireccionLuz, ColorLuz, FA, 0, tiempo);
+		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam, 41.615, 12, -47.883, DireccionLuz, ColorLuz, FA, 0, tiempo);
+		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam, 13.309, 12, -63.302, DireccionLuz, ColorLuz, FA, 0, tiempo);
+		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam, 80.544, 12, -86.881, DireccionLuz, ColorLuz, FA, 0, tiempo);
+		billboard->Draw(camara->vista, camara->proyeccion, camara->posCam, 1.683, 12, -97.425, DireccionLuz, ColorLuz, FA, 0, tiempo);
 
 		
 		//TurnOffAlphaBlending();
@@ -392,15 +400,15 @@ public:
 		house02->Draw(camara->vista, camara->proyeccion, DireccionLuz, ColorLuz, FA, FE, camara->posCam);
 		house03->Draw(camara->vista, camara->proyeccion, DireccionLuz, ColorLuz, FA, FE, camara->posCam);
 		cottage->Draw(camara->vista, camara->proyeccion, DireccionLuz, ColorLuz, FA, FE, camara->posCam);
-		horse->Draw(camara->vista, camara->proyeccion, 5, 4.7, 68.319, 17, 27.563, DireccionLuz, ColorLuz, FA);
-		horse->Draw(camara->vista, camara->proyeccion, 9, 4.7, 75.134, 17, 49.339, DireccionLuz, ColorLuz, FA);
-		horse->Draw(camara->vista, camara->proyeccion, 1, 4.7, 102.66, 17, 10.389, DireccionLuz, ColorLuz, FA);
-		cow->Draw(camara->vista, camara->proyeccion, 5, 0, 60.067, 16, -37.710, DireccionLuz, ColorLuz, FA);
-		cow->Draw(camara->vista, camara->proyeccion, 1, 0, 88.58, 16, -75.61, DireccionLuz, ColorLuz, FA);
-		cow->Draw(camara->vista, camara->proyeccion, 9, 0, 50.138, 16, -59.129, DireccionLuz, ColorLuz, FA);
-		cow->Draw(camara->vista, camara->proyeccion, 2, 0, 15.57, 16, -98.50, DireccionLuz, ColorLuz, FA);
-		cow->Draw(camara->vista, camara->proyeccion, 6, 0, 7.41, 16, -54.52, DireccionLuz, ColorLuz, FA);
-		agua->Draw(camara->vista, camara->proyeccion, 4.8, 0, 150, 5, 0, DireccionLuz, ColorLuz, FA);
+		horse->Draw(camara->vista, camara->proyeccion, 5, 4.7, 68.319, 17, 27.563, DireccionLuz, ColorLuz, FA, 0, aguamov);
+		horse->Draw(camara->vista, camara->proyeccion, 9, 4.7, 75.134, 17, 49.339, DireccionLuz, ColorLuz, FA, 0, aguamov);
+		horse->Draw(camara->vista, camara->proyeccion, 1, 4.7, 102.66, 17, 10.389, DireccionLuz, ColorLuz, FA, 0, aguamov);
+		cow->Draw(camara->vista, camara->proyeccion, 5, 0, 60.067, 16, -37.710, DireccionLuz, ColorLuz, FA, 0, aguamov);
+		cow->Draw(camara->vista, camara->proyeccion, 1, 0, 88.58, 16, -75.61, DireccionLuz, ColorLuz, FA, 0, aguamov);
+		cow->Draw(camara->vista, camara->proyeccion, 9, 0, 50.138, 16, -59.129, DireccionLuz, ColorLuz, FA, 0, aguamov);
+		cow->Draw(camara->vista, camara->proyeccion, 2, 0, 15.57, 16, -98.50, DireccionLuz, ColorLuz, FA, 0, aguamov);
+		cow->Draw(camara->vista, camara->proyeccion, 6, 0, 7.41, 16, -54.52, DireccionLuz, ColorLuz, FA, 0, aguamov);
+		agua->Draw(camara->vista, camara->proyeccion, 4.8, 0, 150, 5, 0, DireccionLuz, ColorLuz, FA, 1, aguamov);
 #pragma endregion
 		
 				
