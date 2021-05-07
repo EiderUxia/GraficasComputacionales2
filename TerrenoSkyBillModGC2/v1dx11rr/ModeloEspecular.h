@@ -433,7 +433,7 @@ public:
 	{
 	}
 
-	void Draw(D3DXMATRIX vista, D3DXMATRIX proyeccion)
+	void Draw(D3DXMATRIX vista, D3DXMATRIX proyeccion, D3DXVECTOR3 Direccion, D3DXVECTOR3 ColorLuz, float FA)
 	{
 		static float rotation = 0.0f;
 		rotation += 0.01;
@@ -485,23 +485,24 @@ public:
 		d3dContext->VSSetConstantBuffers(2, 1, &projCB);
 
 
-		SLA.ColorLuzAmbiental.x = 0.5;
-		SLA.ColorLuzAmbiental.y = 0.5;
-		SLA.ColorLuzAmbiental.z = 0.5;
-		SLA.FA = 0.5;
+
+		SLA.ColorLuzAmbiental.x = ColorLuz[0];
+		SLA.ColorLuzAmbiental.y = ColorLuz[1];
+		SLA.ColorLuzAmbiental.z = ColorLuz[2];
+		SLA.FA = FA;
 		d3dContext->UpdateSubresource(LuzAmbiental, 0, 0, &SLA, 0, 0);
 
 
-		SLD.Color.x = 0.5;
-		SLD.Color.y = 0.5;
-		SLD.Color.z = 0.5;
-		SLD.FAD = 0.5;
+		SLD.Color.x = ColorLuz[0];
+		SLD.Color.y = ColorLuz[1];
+		SLD.Color.z = ColorLuz[2];
+		SLD.FAD = FA;
 		d3dContext->UpdateSubresource(LuzDifusa, 0, 0, &SLD, 0, 0);
 
 
-		SDL.Dir.x = 5.0;
-		SDL.Dir.y = 10.0;
-		SDL.Dir.z = 2.0;
+		SDL.Dir.x = Direccion[0];
+		SDL.Dir.y = Direccion[1];
+		SDL.Dir.z = Direccion[2];
 		d3dContext->UpdateSubresource(DirLuz, 0, 0, &SDL, 0, 0);
 
 		d3dContext->VSSetConstantBuffers(3, 1, &LuzAmbiental);
