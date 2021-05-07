@@ -47,6 +47,7 @@ public:
 	ModeloRR* modelazo;
 	ModeloEspecular* cottage;
 	ModeloRR* cow;
+	ModeloRR* agua;
 	ModeloEspecular* avion;
 	ModeloRR* horse;
 	ModeloEspecular* house01;
@@ -88,7 +89,8 @@ public:
 		horse = new ModeloRR(d3dDevice, d3dContext, "Modelos/A4/A4.obj", L"Modelos/A4/Horse.jpg", L"Modelos/A4/Horse_NM.jpg", 1);
 		cottage = new ModeloEspecular(d3dDevice, d3dContext, "Modelos/A1/Co.obj", L"Modelos/A1/cottage_diffuse.jpg", L"Modelos/A1/cottage_normal.jpg", L"Modelos/A1/cottage_diffuse_esp.jpg", .25, 4.5, 4.71, 50.068, 11, 125);
 		cow = new ModeloRR(d3dDevice, d3dContext, "Modelos/A2/A2.obj", L"Modelos/A2/colorOpacityCow.jpg", L"Modelos/A2/colorOpacityCowNorm.jpg", 1);
-		
+		agua = new ModeloRR(d3dDevice, d3dContext, "Modelos/A8/Agua2.obj", L"Modelos/A8/Agua_B.jpg", L"Modelos/A8/Agua_MN.jpg", 15);
+
 	}
 
 	~DXRR()
@@ -315,6 +317,7 @@ public:
 		cow->Draw(camara->vista, camara->proyeccion, 9, 0, 50.138, 16, -59.129);
 		cow->Draw(camara->vista, camara->proyeccion, 2, 0, 15.57, 16, -98.50);	
 		cow->Draw(camara->vista, camara->proyeccion, 6, 0, 7.41, 16, -54.52);
+		agua->Draw(camara->vista, camara->proyeccion, 4.8, 0, 150, 5, 0);
 #pragma endregion
 		
 				
