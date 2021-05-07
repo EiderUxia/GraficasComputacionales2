@@ -56,6 +56,11 @@ public:
 	float izqder;
 	float arriaba;
 	float vel;
+	float tiempo = 0.0;
+	int tiempo2 = 0;
+	D3DXVECTOR3 DireccionLuz;
+	D3DXVECTOR3 ColorLuz;
+	float FA;
 	
     DXRR(HWND hWnd, int Ancho, int Alto)
 	{
@@ -73,7 +78,7 @@ public:
 		camara = new Camara(D3DXVECTOR3(27,80,67), D3DXVECTOR3(66,80,-19), D3DXVECTOR3(0,1,0), Ancho, Alto);
 		terreno = new TerrenoRR(400, 400, d3dDevice, d3dContext);
 		//skydome = new SkyDome(32, 32, 100.0f, &d3dDevice, &d3dContext, L"SkyDome.png");
-		skydome = new SkyDome(32, 32, 100.0f, &d3dDevice, &d3dContext, L"Skydome/SkyDome3.jpg");
+		skydome = new SkyDome(32, 32, 100.0f, &d3dDevice, &d3dContext, L"Skydome/SkyDome1.5.jpg", L"Skydome/SkyDome2.5.jpg", L"Skydome/SkyDome3.jpg");
 
 
 		billboard = new BillboardRR(L"Billboard/grass.png", L"Billboard/grass_normal.png", d3dDevice, d3dContext, 1);
@@ -256,6 +261,19 @@ public:
 	
 	void Render(void)
 	{
+		tiempo = tiempo + 0.0005;
+		if (tiempo > 1.0 && tiempo < 2.0) {
+			tiempo2 = 1;
+		}
+		else if (tiempo > 2.0 && tiempo < 3.0) {
+			tiempo2 = 2;
+		}
+		else if(tiempo > 3.0){
+			tiempo = 0.0;
+			tiempo2 = 0;
+		}
+
+
 		if( d3dContext == 0 )
 			return;
 
@@ -267,7 +285,7 @@ public:
 		skydome->Update(camara->vista, camara->proyeccion);
 
 		TurnOffDepth();
-		skydome->Render(camara->posCam);
+		skydome->Render(camara->posCam, tiempo2);
 		TurnOnDepth();
 		terreno->Draw(camara->vista, camara->proyeccion);
 		//TurnOnAlphaBlending();

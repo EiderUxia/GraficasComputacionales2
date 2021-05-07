@@ -21,6 +21,16 @@ struct MatrixType
 	D3DXVECTOR4 valores;
 };
 
+struct tiempo {
+	int tiempo;
+	int cambio;
+	float a;
+	float b;
+
+};
+
+
+
 class SkyDome
 {
 public:
@@ -41,6 +51,10 @@ private:
 	ID3D11Buffer* matrixBufferCB;
 	MatrixType* matrices;
 
+	ID3D11Buffer* tiempoBuffer;
+	tiempo* tiem;
+
+
 	SkyComponent* vertices;
 	int slices, stacks, cantIndex;
 	short* indices;
@@ -50,7 +64,7 @@ private:
 
 public:
 	SkyDome(int slices, int stacks, float radio, ID3D11Device** d3dDevice,
-		ID3D11DeviceContext** d3dContext, WCHAR* diffuseTex)
+		ID3D11DeviceContext** d3dContext, WCHAR* text1, WCHAR* text2, WCHAR* text3)
 	{
 		this->slices = slices;
 		this->stacks = stacks;
@@ -59,7 +73,7 @@ public:
 		vertices = NULL;
 		this->d3dDevice = d3dDevice;
 		this->d3dContext = d3dContext;
-		LoadContent(diffuseTex);
+		LoadContent(text1, text2, text3);
 	}
 
 	~SkyDome()
@@ -93,7 +107,7 @@ public:
 		return true;
 	}
 
-	bool LoadContent(WCHAR* diffuseTex)
+	bool LoadContent(WCHAR* text1, WCHAR* text2, WCHAR* text3)
 	{
 		HRESULT d3dResult;
 
@@ -118,6 +132,7 @@ public:
 
 			return false;
 		}
+	
 
 		D3D11_INPUT_ELEMENT_DESC solidColorLayout[] =
 		{
@@ -199,9 +214,9 @@ public:
 
 		creaIndices();
 
-		d3dResult = D3DX11CreateShaderResourceViewFromFile((*d3dDevice), diffuseTex, 0, 0, &textura, 0);
-		d3dResult = D3DX11CreateShaderResourceViewFromFile((*d3dDevice), diffuseTex, 0, 0, &textura2, 0);
-		d3dResult = D3DX11CreateShaderResourceViewFromFile((*d3dDevice), diffuseTex, 0, 0, &textura3, 0);
+		d3dResult = D3DX11CreateShaderResourceViewFromFile((*d3dDevice), text1, 0, 0, &textura, 0);
+		d3dResult = D3DX11CreateShaderResourceViewFromFile((*d3dDevice), text2, 0, 0, &textura2, 0);
+		d3dResult = D3DX11CreateShaderResourceViewFromFile((*d3dDevice), text3, 0, 0, &textura3, 0);
 
 		if (FAILED(d3dResult))
 		{
@@ -240,6 +255,21 @@ public:
 		}
 		matrices = new MatrixType;
 
+		D3D11_BUFFER_DESC constDesc2;
+		ZeroMemory(&constDesc2, sizeof(constDesc2));
+		constDesc2.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+		constDesc2.ByteWidth = sizeof(tiempo);
+		constDesc2.Usage = D3D11_USAGE_DEFAULT;
+
+		d3dResult = (*d3dDevice)->CreateBuffer(&constDesc2, 0, &tiempoBuffer);
+
+		if (FAILED(d3dResult))
+		{
+			return false;
+		}
+		tiem = new tiempo;
+		//*tiem = t;
+
 		return true;
 	}
 
@@ -266,6 +296,7 @@ public:
 		if (matrixBufferCB)
 			matrixBufferCB->Release();
 
+
 		texSampler = 0;
 		textura = 0;
 		solidColorVS = 0;
@@ -274,6 +305,7 @@ public:
 		vertexBuffer = 0;
 		indexBuffer = 0;
 		matrixBufferCB = 0;
+
 
 		return true;
 	}
@@ -284,7 +316,7 @@ public:
 		matrices->projMatrix = projection;
 	}
 
-	void Render(D3DXVECTOR3 trans)
+	void Render(D3DXVECTOR3 trans, int tiempo)
 	{
 		if (d3dContext == 0)
 			return;
@@ -311,6 +343,17 @@ public:
 
 		(*d3dContext)->UpdateSubresource(matrixBufferCB, 0, 0, matrices, sizeof(MatrixType), 0);
 		(*d3dContext)->VSSetConstantBuffers(0, 1, &matrixBufferCB);
+
+		if(tiempo == 0)
+			tiem->tiempo = 0;
+		if (tiempo == 1)
+			tiem->tiempo = 1;
+		if (tiempo == 2)
+			tiem->tiempo = 2;
+
+
+		(*d3dContext)->UpdateSubresource(tiempoBuffer, 0, 0, tiem, sizeof(tiempo), 0);
+		(*d3dContext)->PSSetConstantBuffers(1, 1, &tiempoBuffer);
 
 		(*d3dContext)->DrawIndexed(cantIndex, 0, 0);
 	}
