@@ -53,6 +53,10 @@ public:
 	ModeloEspecular* house01;
 	ModeloEspecular* house02;
 	ModeloEspecular* house03;
+
+	ModeloEspecular* roca;
+	ModeloEspecular* roca2;
+
 	float izqder;
 	float arriaba;
 	float vel;
@@ -113,6 +117,10 @@ public:
 		cottage = new ModeloEspecular(d3dDevice, d3dContext, "Modelos/A1/Co.obj", L"Modelos/A1/cottage_diffuse.jpg", L"Modelos/A1/cottage_normal.jpg", L"Modelos/A1/cottage_diffuse_esp.jpg", .25, 4.5, 4.71, 50.068, 11, 125);
 		cow = new ModeloRR(d3dDevice, d3dContext, "Modelos/A2/A2.obj", L"Modelos/A2/colorOpacityCow.jpg", L"Modelos/A2/colorOpacityCowNorm.jpg", 1);
 		agua = new ModeloRR(d3dDevice, d3dContext, "Modelos/A8/Agua2.obj", L"Modelos/A8/Agua_B.jpg", L"Modelos/A8/Agua_MN.jpg", 15);
+
+
+		roca = new ModeloEspecular(d3dDevice, d3dContext, "Modelos/Roca01/01R.obj", L"Modelos/Roca01/rock_Base_Color.jpg", L"Modelos/Roca01/rock_Normal_OpenGL.jpg", L"Modelos/Roca01/rock_Metallic.jpg", 3, 0, 0, 164.93, 0, -182.72);
+		roca2 = new ModeloEspecular(d3dDevice, d3dContext, "Modelos/Roca02/R02.obj", L"Modelos/Roca01/rock_Base_Color.jpg", L"Modelos/Roca01/rock_Normal_OpenGL.jpg", L"Modelos/Roca01/rock_Metallic.jpg", 1, 0, 0, 120, 5, 160);
 
 	}
 
@@ -279,6 +287,7 @@ public:
 	
 	void Render(void)
 	{
+#pragma region Tiempos 
 		tiempo = tiempo + 0.0005;
 		if (tiempo > 0.0 && tiempo < 1.0) {
 			
@@ -401,6 +410,10 @@ public:
 		if (aguamov >= 1)
 			aguamov = 0.0;
 
+#pragma endregion
+
+
+
 		if( d3dContext == 0 )
 			return;
 
@@ -455,6 +468,12 @@ public:
 		house02->Draw(camara->vista, camara->proyeccion, DireccionLuz, ColorLuz, FA, FE, camara->posCam);
 		house03->Draw(camara->vista, camara->proyeccion, DireccionLuz, ColorLuz, FA, FE, camara->posCam);
 		cottage->Draw(camara->vista, camara->proyeccion, DireccionLuz, ColorLuz, FA, FE, camara->posCam);
+
+		roca->Draw(camara->vista, camara->proyeccion, DireccionLuz, ColorLuz, FA, FE, camara->posCam);
+		roca2->Draw(camara->vista, camara->proyeccion, DireccionLuz, ColorLuz, FA, FE, camara->posCam);
+
+
+
 		horse->Draw(camara->vista, camara->proyeccion, 5, 4.7, 68.319, 17, 27.563, DireccionLuz, ColorLuz, FA, 0, aguamov);
 		horse->Draw(camara->vista, camara->proyeccion, 9, 4.7, 75.134, 17, 49.339, DireccionLuz, ColorLuz, FA, 0, aguamov);
 		horse->Draw(camara->vista, camara->proyeccion, 1, 4.7, 102.66, 17, 10.389, DireccionLuz, ColorLuz, FA, 0, aguamov);
