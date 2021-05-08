@@ -24,7 +24,7 @@ struct MatrixType
 struct tiempo {
 	int tiempo;
 	int cambio;
-	float a;
+	int a;
 	float b;
 
 };
@@ -316,7 +316,7 @@ public:
 		matrices->projMatrix = projection;
 	}
 
-	void Render(D3DXVECTOR3 trans, int tiempo)
+	void Render(D3DXVECTOR3 trans, int tiempo0, int cieloOp, float cieloTiempo)
 	{
 		if (d3dContext == 0)
 			return;
@@ -344,12 +344,14 @@ public:
 		(*d3dContext)->UpdateSubresource(matrixBufferCB, 0, 0, matrices, sizeof(MatrixType), 0);
 		(*d3dContext)->VSSetConstantBuffers(0, 1, &matrixBufferCB);
 
-		if(tiempo == 0)
+		if(tiempo0 == 0)
 			tiem->tiempo = 0;
-		if (tiempo == 1)
+		if (tiempo0 == 1)
 			tiem->tiempo = 1;
-		if (tiempo == 2)
+		if (tiempo0 == 2)
 			tiem->tiempo = 2;
+		tiem->a = cieloOp;
+		tiem->b = cieloTiempo;
 
 
 		(*d3dContext)->UpdateSubresource(tiempoBuffer, 0, 0, tiem, sizeof(tiempo), 0);

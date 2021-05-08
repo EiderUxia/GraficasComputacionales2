@@ -63,6 +63,8 @@ public:
 	float FA;
 	float FE;
 	float luna;
+	int cieloOp;
+	float cieloTiempo;
 	
     DXRR(HWND hWnd, int Ancho, int Alto)
 	{
@@ -88,9 +90,10 @@ public:
 		ColorLuz[1] = 1;
 		ColorLuz[2] = 1;
 
-		FA = 0.1;
-		FE = 0.1;
-		
+		FA = 0.3;
+		FE = 0.3;
+		cieloOp = 0;
+		cieloTiempo = 0;
 
 
 		skydome = new SkyDome(32, 32, 100.0f, &d3dDevice, &d3dContext, L"Skydome/SkyDome1.5.jpg", L"Skydome/SkyDome2.5.jpg", L"Skydome/SkyDome3.jpg");
@@ -278,6 +281,7 @@ public:
 	{
 		tiempo = tiempo + 0.0005;
 		if (tiempo > 0.0 && tiempo < 1.0) {
+			
 			DireccionLuz[0] = DireccionLuz[0] + 0.12;
 			DireccionLuz[1] = DireccionLuz[1] + 0.0095;
 			DireccionLuz[2] = DireccionLuz[2] + 0.12;
@@ -289,6 +293,17 @@ public:
 			FA = FA + 0.00015;
 			FE = 0.05;
 			luna = -40;
+			if (tiempo > 0.8) {
+				cieloOp = 1;
+				cieloTiempo = cieloTiempo + 0.01;
+				if (cieloTiempo > 1) {
+					cieloTiempo = 1;
+				}
+			}
+			else {
+				cieloOp = 0;
+				cieloTiempo = 0;
+			}
 		}
 		else if (tiempo > 1.0 && tiempo < 2.0) {
 			tiempo2 = 1;
@@ -309,6 +324,22 @@ public:
 				}
 			}
 
+			if (tiempo > 1.7) {
+				cieloOp = 1;
+				cieloTiempo = cieloTiempo + 0.01;
+				if (cieloTiempo > 1) {
+					cieloTiempo = 1;
+				}
+				FA = FA - 0.015;
+				if (FA < 0) {
+					FA = 0;
+				}
+			}
+			else {
+				cieloOp = 0;
+				cieloTiempo = 0;
+			}
+
 		}
 		else if (tiempo > 2.0 && tiempo < 3.0) {
 			tiempo2 = 2;
@@ -317,10 +348,34 @@ public:
 			ColorLuz[1] = 1;
 			ColorLuz[2] = 1;
 
-			FA = FA - 0.0002;
+
 			
-			if (tiempo > 2.8) {
+			if (tiempo > 2.7) {
 				luna = luna - 000000001;
+	
+			}
+			else {
+				FA = FA - 0.002;
+			}
+
+			if (tiempo > 2.7) {
+				FA = FA + 0.2;
+				FE = FE + 0.5;
+
+				cieloOp = 1;
+				cieloTiempo = cieloTiempo + 0.01;
+				if (cieloTiempo > 1) {
+					cieloTiempo = 1;
+				}
+				
+				if (FA > 0.3) {
+					FA = 0.3;
+				}
+
+			}
+			else {
+				cieloOp = 0;
+				cieloTiempo = 0;
 			}
 
 	
@@ -336,8 +391,8 @@ public:
 			ColorLuz[1] = 1;
 			ColorLuz[2] = 1;
 
-			FA = 0.1;
-			FE = 0.1;
+			FA = 0.3;
+			FE = 0.3;
 
 			luna = luna - 0.0002;
 		}
@@ -357,7 +412,7 @@ public:
 		skydome->Update(camara->vista, camara->proyeccion);
 
 		TurnOffDepth();
-		skydome->Render(camara->posCam, tiempo2);
+		skydome->Render(camara->posCam, tiempo2, cieloOp, cieloTiempo);
 		TurnOnDepth();
 		terreno->Draw(camara->vista, camara->proyeccion, DireccionLuz, ColorLuz, FA);
 		//TurnOnAlphaBlending();

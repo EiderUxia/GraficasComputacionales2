@@ -15,7 +15,7 @@ cbuffer TiempoSkyDome : register(b1)
 {
 	int tiempo;
 	int cambio;
-	float a;
+	int a;
 	float b;
 };
 
@@ -45,17 +45,34 @@ PS_Input VS_Main(VS_Input vertex)
 
 float4 PS_Main(PS_Input pix) : SV_TARGET
 {
-	float4 finalColor;
+	float4 finalColor1 = textures.Sample(colorSampler, pix.tex0);
+	float4 finalColor2 = textures2.Sample(colorSampler, pix.tex0);
+	float4 finalColor3 = textures3.Sample(colorSampler, pix.tex0);
+	float4 text;
+	
 	if (tiempo == 0) {
-		finalColor = textures.Sample(colorSampler, pix.tex0);
+		text = finalColor1;
+		if (a == 1) {
+			text = lerp(finalColor1, finalColor2, b);
+		}
+		
+
 	}
 	if (tiempo == 1) {
-		finalColor = textures2.Sample(colorSampler, pix.tex0);
+		text = finalColor2;
+		if (a == 1) {
+			text = lerp(finalColor2, finalColor3, b);
+		}
+
 	}
 	if (tiempo == 2) {
-		finalColor = textures3.Sample(colorSampler, pix.tex0);
+		text = finalColor3;
+		if (a == 1) {
+			text = lerp(finalColor3, finalColor1, b);
+		}
+
 	}
 	
-
-	return finalColor;
+	return text;
+	
 }
