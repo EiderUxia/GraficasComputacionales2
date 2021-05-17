@@ -83,8 +83,8 @@ public:
 		IniciaD3D(hWnd);
 		izqder = 0;
 		arriaba = 0;
-		camara = new Camara(D3DXVECTOR3(27,80,67), D3DXVECTOR3(66,80,-19), D3DXVECTOR3(0,1,0), Ancho, Alto);
-		terreno = new TerrenoRR(400, 400, d3dDevice, d3dContext);
+		camara = new Camara(D3DXVECTOR3(21,80,-1), D3DXVECTOR3(66,80,-19), D3DXVECTOR3(0,1,0), Ancho, Alto);
+		terreno = new TerrenoRR(370, 370, d3dDevice, d3dContext);
 		//skydome = new SkyDome(32, 32, 100.0f, &d3dDevice, &d3dContext, L"SkyDome.png");
 		DireccionLuz[0] = -190;
 		DireccionLuz[1] = 0;
@@ -109,12 +109,12 @@ public:
 		Arbusto3 = new BillboardRR(L"Billboard/Arbusto3_Base.png", L"Billboard/Arbusto3_Normal.png", d3dDevice, d3dContext, 7);
 		Moon = new BillboardRR(L"Billboard/Moon.png", L"Billboard/Moon_Normal.png", d3dDevice, d3dContext, 10);
 
-		avion = new ModeloEspecular(d3dDevice, d3dContext, "Modelos/A3/A3.obj", L"Modelos/A3/texture.jpg", L"Modelos/A3/texture_nm.jpg", L"Modelos/A3/texture_esp.jpg", 5.4, 3, 4.7, 47.191, 20, -132.762);
-		house01 = new ModeloEspecular(d3dDevice, d3dContext, "Modelos/A5/House01.obj", L"Modelos/A5/texture.jpg", L"Modelos/A5/texture_nm.jpg", L"Modelos/A5/texture_esp.jpg", 3, 1, 4.7, -91.152, 9.5, -67.900);
-		house02 = new ModeloEspecular(d3dDevice, d3dContext, "Modelos/A6/House02.obj", L"Modelos/A6/texture1.jpg", L"Modelos/A6/texture1_normal.jpg", L"Modelos/A6/texture1_esp.jpg", 3, 3, 0, -18.559, 12, 82.141);
+		avion = new ModeloEspecular(d3dDevice, d3dContext, "Modelos/A3/A3.obj", L"Modelos/A3/texture.jpg", L"Modelos/A3/texture_nm.jpg", L"Modelos/A3/texture_esp.jpg", 5.4, 3, 4.7, 47.191, 20, -133.762);
+		house01 = new ModeloEspecular(d3dDevice, d3dContext, "Modelos/A5/House01.obj", L"Modelos/A5/texture.jpg", L"Modelos/A5/texture_nm.jpg", L"Modelos/A5/texture_esp.jpg", 3, 1.5, 4.7, -91.152, 9.5, -67.900);
+		house02 = new ModeloEspecular(d3dDevice, d3dContext, "Modelos/A6/House02.obj", L"Modelos/A6/texture1.jpg", L"Modelos/A6/texture1_normal.jpg", L"Modelos/A6/texture1_esp.jpg", 3, 3.15, 0, -18.559, 12, 83);
 		house03 = new ModeloEspecular(d3dDevice, d3dContext, "Modelos/A7/House03.obj", L"Modelos/A7/texture 2.jpg", L"Modelos/A7/texture 2_normal.jpg", L"Modelos/A7/texture 2_especular.jpg", 3, 0, 0, -108.825, 13, 26.023);
 		horse = new ModeloRR(d3dDevice, d3dContext, "Modelos/A4/A4.obj", L"Modelos/A4/Horse.jpg", L"Modelos/A4/Horse_NM.jpg", 1);
-		cottage = new ModeloEspecular(d3dDevice, d3dContext, "Modelos/A1/Co.obj", L"Modelos/A1/cottage_diffuse.jpg", L"Modelos/A1/cottage_normal.jpg", L"Modelos/A1/cottage_diffuse_esp.jpg", .25, 4.5, 4.71, 50.068, 11, 125);
+		cottage = new ModeloEspecular(d3dDevice, d3dContext, "Modelos/A1/Co.obj", L"Modelos/A1/cottage_diffuse.jpg", L"Modelos/A1/cottage_normal.jpg", L"Modelos/A1/cottage_diffuse_esp.jpg", .25, 4.6, 4.71, 50.068, 11, 125);
 		cow = new ModeloRR(d3dDevice, d3dContext, "Modelos/A2/A2.obj", L"Modelos/A2/colorOpacityCow.jpg", L"Modelos/A2/colorOpacityCowNorm.jpg", 1);
 		agua = new ModeloRR(d3dDevice, d3dContext, "Modelos/A8/Agua2.obj", L"Modelos/A8/Agua_B.jpg", L"Modelos/A8/Agua_MN.jpg", 15);
 
@@ -439,14 +439,14 @@ public:
 		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, 9.5, 12, -86.434, DireccionLuz, ColorLuz, FA, 0, tiempo);
 		Arbusto1->Draw(camara->vista, camara->proyeccion, camara->posCam, 71.095, 12, -85.362, DireccionLuz, ColorLuz, FA, 0, tiempo);
 
-		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, -94.687, 11, 1.748, DireccionLuz, ColorLuz, FA, 0, tiempo);
-		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, -120.73, 11, -45.806, DireccionLuz, ColorLuz, FA, 0, tiempo);
-		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, 15.104, 12, 110.103, DireccionLuz, ColorLuz, FA, 0, tiempo);
-		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, 35.908, 13, 146.632, DireccionLuz, ColorLuz, FA, 0, tiempo);
-		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, -108.363, 11, 75.124, DireccionLuz, ColorLuz, FA, 0, tiempo);
+		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, -94.687, 11.2, 1.748, DireccionLuz, ColorLuz, FA, 0, tiempo);
+		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, -120.73, 11.2, -45.806, DireccionLuz, ColorLuz, FA, 0, tiempo);
+		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, 15.104, 11.5, 110.103, DireccionLuz, ColorLuz, FA, 0, tiempo);
+		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, 35.908, 14.5, 146.632, DireccionLuz, ColorLuz, FA, 0, tiempo);
+		Arbusto2->Draw(camara->vista, camara->proyeccion, camara->posCam, -108.363, 11.7, 75.124, DireccionLuz, ColorLuz, FA, 0, tiempo);
 
 		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, -124.094, 12.5, -12.094, DireccionLuz, ColorLuz, FA, 0, tiempo);
-		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, -179.328, 24, -66.757, DireccionLuz, ColorLuz, FA, 0, tiempo);
+		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, -179.328, 26, -66.757, DireccionLuz, ColorLuz, FA, 0, tiempo);
 		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, -104.398, 12, 115.003, DireccionLuz, ColorLuz, FA, 0, tiempo);
 		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, -129.379, 12.5, 71.725, DireccionLuz, ColorLuz, FA, 0, tiempo);
 		Arbusto3->Draw(camara->vista, camara->proyeccion, camara->posCam, 21.549, 13, 136.258, DireccionLuz, ColorLuz, FA, 0, tiempo);

@@ -97,12 +97,13 @@ public:
 		D3DXMatrixTranspose( &vista, &vista );
 
 		if (
-			posCam[0] < -150 || posCam[0] > 140 ||
-			posCam[2] < -100 || posCam[2] > 180 ||
-			posCam[0] > -130 && posCam[0] < -52 && posCam[2] > -120 && posCam[2] < -26 ||
-			posCam[0] > -130 && posCam[0] < -78 && posCam[2] > 3 && posCam[2] < 56 ||
-			posCam[0] > -65 && posCam[0] < 15 && posCam[2] > 50 && posCam[2] < 110 ||
-			posCam[0] > 37 && posCam[0] < 68 && posCam[2] > 98 && posCam[2] < 148
+			posCam[0] > 113.03 || posCam[0] < -153 ||
+			posCam[2] < -168 || posCam[2] > 152 ||
+			posCam[0] < 49 && posCam[0] > 19.42 && posCam[2] < -102.29 ||
+			posCam[0] > -116 && posCam[0] < -60.2 && posCam[2] > -117 && posCam[2] < -36.2 ||
+			posCam[0] > -131.18 && posCam[0] < -80.26 && posCam[2] > 13.4 && posCam[2] < 53.7 ||
+			posCam[0] > -64 && posCam[0] < 15.5 && posCam[2] < 101 && posCam[2] > 57.3 ||
+			posCam[0] > 41 && posCam[0] < 71 && posCam[2] < 151.5 && posCam[2] > 99
 			) {
 			posCam = posCamTempo;
 			vista = vistaTempo;

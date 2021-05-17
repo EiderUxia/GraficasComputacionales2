@@ -125,6 +125,7 @@ float4 PS_Main(PS_Input pix) : SV_TARGET
 
 
 	fColor = fColor * (AportAmbiental + AportLuzDif);
+	
 
 	return fColor;
 }
