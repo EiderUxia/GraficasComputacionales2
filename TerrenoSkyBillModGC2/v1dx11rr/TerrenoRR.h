@@ -284,7 +284,7 @@ public:
 		d3dResult = D3DX11CreateShaderResourceViewFromFile( d3dDevice, L"Text/Grass_normal.jpg", 0, 0, &TexTerr1NM, 0 );
 		d3dResult = D3DX11CreateShaderResourceViewFromFile( d3dDevice, L"Text/Mud_normal.jpg", 0, 0, &TexTerr2NM, 0 );
 		d3dResult = D3DX11CreateShaderResourceViewFromFile(d3dDevice, L"Text/Pebbles_Normal.jpg", 0, 0, &TexTerr3NM, 0);
-		d3dResult = D3DX11CreateShaderResourceViewFromFile( d3dDevice, L"Blend1.jpg", 0, 0, &blendMap, 0 );
+		d3dResult = D3DX11CreateShaderResourceViewFromFile( d3dDevice, L"Blend2.jpg", 0, 0, &blendMap, 0 );
 
 		//***************************************************************************************************************************************//
 		//***************************************************************************************************************************************//

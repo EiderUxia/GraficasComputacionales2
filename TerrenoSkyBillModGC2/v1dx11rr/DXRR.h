@@ -116,7 +116,7 @@ public:
 		horse = new ModeloRR(d3dDevice, d3dContext, "Modelos/A4/A4.obj", L"Modelos/A4/Horse.jpg", L"Modelos/A4/Horse_NM.jpg", 1);
 		cottage = new ModeloEspecular(d3dDevice, d3dContext, "Modelos/A1/Co.obj", L"Modelos/A1/cottage_diffuse.jpg", L"Modelos/A1/cottage_normal.jpg", L"Modelos/A1/cottage_diffuse_esp.jpg", .25, 4.6, 4.71, 50.068, 11, 125);
 		cow = new ModeloRR(d3dDevice, d3dContext, "Modelos/A2/A2.obj", L"Modelos/A2/colorOpacityCow.jpg", L"Modelos/A2/colorOpacityCowNorm.jpg", 1);
-		agua = new ModeloRR(d3dDevice, d3dContext, "Modelos/A8/Agua2.obj", L"Modelos/A8/Agua_B.jpg", L"Modelos/A8/Agua_MN.jpg", 15);
+		agua = new ModeloRR(d3dDevice, d3dContext, "Modelos/A8/Agua1.obj", L"Modelos/A8/Agua_B.jpg", L"Modelos/A8/Agua_MN.jpg", 15);
 
 
 		roca = new ModeloEspecular(d3dDevice, d3dContext, "Modelos/Roca01/01R.obj", L"Modelos/Roca01/rock_Base_Color.jpg", L"Modelos/Roca01/rock_Normal_OpenGL.jpg", L"Modelos/Roca01/rock_Metallic.jpg", 3, 0, 0, 164.93, 0, -182.72);
@@ -482,7 +482,7 @@ public:
 		cow->Draw(camara->vista, camara->proyeccion, 9, 0, 50.138, 16, -59.129, DireccionLuz, ColorLuz, FA, 0, aguamov);
 		cow->Draw(camara->vista, camara->proyeccion, 2, 0, 15.57, 16, -98.50, DireccionLuz, ColorLuz, FA, 0, aguamov);
 		cow->Draw(camara->vista, camara->proyeccion, 6, 0, 7.41, 16, -54.52, DireccionLuz, ColorLuz, FA, 0, aguamov);
-		agua->Draw(camara->vista, camara->proyeccion, 4.8, 0, 150, 5, 0, DireccionLuz, ColorLuz, FA, 1, aguamov);
+		agua->Draw(camara->vista, camara->proyeccion, 4.8, 0, 140, 8, 0, DireccionLuz, ColorLuz, FA, 1, aguamov);
 #pragma endregion
 		
 				
