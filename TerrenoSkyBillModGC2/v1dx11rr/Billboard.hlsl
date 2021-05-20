@@ -36,7 +36,7 @@ cbuffer DirLuz : register(b5)
 	float padding;
 };
 
-cbuffer Agua : register(b6)
+cbuffer Luna : register(b6)
 {
 	int op;
 	float FA;
